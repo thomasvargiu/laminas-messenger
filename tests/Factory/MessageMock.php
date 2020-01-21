@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace TMV\Messenger\Test\Factory;
+namespace TMV\Laminas\Messenger\Test\Factory;
 
 class MessageMock
 {

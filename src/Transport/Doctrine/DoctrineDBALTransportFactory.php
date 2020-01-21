@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace TMV\Messenger\Transport\Doctrine;
+namespace TMV\Laminas\Messenger\Transport\Doctrine;
 
 use InvalidArgumentException;
 use Psr\Container\ContainerInterface;

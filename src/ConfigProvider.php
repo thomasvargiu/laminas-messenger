@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace TMV\Messenger;
+namespace TMV\Laminas\Messenger;
 
 use Laminas\ServiceManager\Factory\InvokableFactory;
 use Symfony\Component\Messenger as SFMessenger;

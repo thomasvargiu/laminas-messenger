@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace TMV\Messenger\Test\Factory\Transport;
+namespace TMV\Laminas\Messenger\Test\Factory\Transport;
 
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\Messenger\Transport\TransportFactoryInterface;
-use TMV\Messenger\Factory\Transport\TransportFactoryFactory;
+use TMV\Laminas\Messenger\Factory\Transport\TransportFactoryFactory;
 
 class TransportFactoryFactoryTest extends TestCase
 {

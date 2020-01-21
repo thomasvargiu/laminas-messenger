@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace TMV\Messenger\Test;
+namespace TMV\Laminas\Messenger\Test;
 
 use PHPUnit\Framework\TestCase;
-use TMV\Messenger\ConfigProvider;
+use TMV\Laminas\Messenger\ConfigProvider;
 
 class ConfigProviderTest extends TestCase
 {

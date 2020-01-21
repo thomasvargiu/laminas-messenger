@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace TMV\Messenger\Test\Factory\Transport\Sender;
+namespace TMV\Laminas\Messenger\Test\Factory\Transport\Sender;
 
 use function iterator_to_array;
 use PHPUnit\Framework\TestCase;
@@ -10,9 +10,9 @@ use Psr\Container\ContainerInterface;
 use Symfony\Component\Messenger\Envelope;
 use Symfony\Component\Messenger\Transport\Sender\SendersLocator;
 use Symfony\Component\Messenger\Transport\TransportInterface;
-use TMV\Messenger\Exception\LogicException;
-use TMV\Messenger\Factory\Transport\Sender\SendersLocatorFactory;
-use TMV\Messenger\Test\Factory\MessageMock;
+use TMV\Laminas\Messenger\Exception\LogicException;
+use TMV\Laminas\Messenger\Factory\Transport\Sender\SendersLocatorFactory;
+use TMV\Laminas\Messenger\Test\Factory\MessageMock;
 
 class SendersLocatorFactoryTest extends TestCase
 {

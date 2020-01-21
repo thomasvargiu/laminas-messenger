@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace TMV\Messenger\Test\Factory\Transport\Doctrine;
+namespace TMV\Laminas\Messenger\Test\Factory\Transport\Doctrine;
 
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
-use TMV\Messenger\Factory\Transport\Doctrine\DoctrineDBALTransportFactoryFactory;
-use TMV\Messenger\Transport\Doctrine\DoctrineDBALTransportFactory;
+use TMV\Laminas\Messenger\Factory\Transport\Doctrine\DoctrineDBALTransportFactoryFactory;
+use TMV\Laminas\Messenger\Transport\Doctrine\DoctrineDBALTransportFactory;
 use TypeError;
 
 class DoctrineDBALTransportFactoryFactoryTest extends TestCase

@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace TMV\Messenger\Test\Factory\Transport\Receiver;
+namespace TMV\Laminas\Messenger\Test\Factory\Transport\Receiver;
 
 use Laminas\ServiceManager\ServiceManager;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\Messenger\Transport\Receiver\ReceiverInterface;
 use Symfony\Component\Messenger\Transport\TransportInterface;
-use TMV\Messenger\Exception\InvalidArgumentException;
-use TMV\Messenger\Factory\Transport\Receiver\ReceiversLocatorFactory;
+use TMV\Laminas\Messenger\Exception\InvalidArgumentException;
+use TMV\Laminas\Messenger\Factory\Transport\Receiver\ReceiversLocatorFactory;
 
 class ReceiversLocatorFactoryTest extends TestCase
 {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace TMV\Messenger\Test\Transport\Doctrine;
+namespace TMV\Laminas\Messenger\Test\Transport\Doctrine;
 
 use Doctrine\DBAL\Connection;
 use InvalidArgumentException;
@@ -11,7 +11,7 @@ use Psr\Container\ContainerInterface;
 use Symfony\Component\Messenger\Exception\TransportException;
 use Symfony\Component\Messenger\Transport\Doctrine\DoctrineTransport;
 use Symfony\Component\Messenger\Transport\Serialization\SerializerInterface;
-use TMV\Messenger\Transport\Doctrine\DoctrineDBALTransportFactory;
+use TMV\Laminas\Messenger\Transport\Doctrine\DoctrineDBALTransportFactory;
 
 class DoctrineDBALTransportFactoryTest extends TestCase
 {

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace TMV\Messenger;
+namespace TMV\Laminas\Messenger;
 
 use PHPUnit\Framework\TestCase;
-use TMV\Messenger\Exception\ExceptionInterface;
-use TMV\Messenger\Exception\RuntimeException;
+use TMV\Laminas\Messenger\Exception\ExceptionInterface;
+use TMV\Laminas\Messenger\Exception\RuntimeException;
 
 class RuntimeExceptionTest extends TestCase
 {

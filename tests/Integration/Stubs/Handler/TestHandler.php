@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace TMV\Messenger\Test\Integration\Stubs\Handler;
+namespace TMV\Laminas\Messenger\Test\Integration\Stubs\Handler;
 
 class TestHandler
 {

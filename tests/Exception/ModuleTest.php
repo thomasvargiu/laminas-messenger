@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace TMV\Messenger\Test;
+namespace TMV\Laminas\Messenger\Test;
 
 use PHPUnit\Framework\TestCase;
-use TMV\Messenger\Module;
+use TMV\Laminas\Messenger\Module;
 
 class ModuleTest extends TestCase
 {

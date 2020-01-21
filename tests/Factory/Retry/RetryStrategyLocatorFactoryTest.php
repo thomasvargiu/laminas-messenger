@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace TMV\Messenger\Test\Factory\Retry;
+namespace TMV\Laminas\Messenger\Test\Factory\Retry;
 
 use Laminas\ServiceManager\ServiceManager;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\Messenger\Retry\RetryStrategyInterface;
-use TMV\Messenger\Factory\Retry\RetryStrategyLocatorFactory;
+use TMV\Laminas\Messenger\Factory\Retry\RetryStrategyLocatorFactory;
 
 class RetryStrategyLocatorFactoryTest extends TestCase
 {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace TMV\Messenger\Factory\Retry;
+namespace TMV\Laminas\Messenger\Factory\Retry;
 
 use function is_string;
 use Psr\Container\ContainerInterface;

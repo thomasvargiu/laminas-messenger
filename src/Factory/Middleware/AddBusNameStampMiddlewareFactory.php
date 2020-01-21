@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace TMV\Messenger\Factory\Middleware;
+namespace TMV\Laminas\Messenger\Factory\Middleware;
 
 use function array_key_exists;
 use Psr\Container\ContainerInterface;
 use function sprintf;
 use Symfony\Component\Messenger\Middleware\AddBusNameStampMiddleware;
-use TMV\Messenger\Exception\InvalidArgumentException;
+use TMV\Laminas\Messenger\Exception\InvalidArgumentException;
 
 final class AddBusNameStampMiddlewareFactory
 {

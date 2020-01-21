@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace TMV\Messenger\Handler;
+namespace TMV\Laminas\Messenger\Handler;
 
 use function class_implements;
 use function class_parents;
@@ -15,7 +15,7 @@ use Symfony\Component\Messenger\Envelope;
 use Symfony\Component\Messenger\Handler\HandlerDescriptor;
 use Symfony\Component\Messenger\Handler\HandlersLocatorInterface;
 use Symfony\Component\Messenger\Stamp\ReceivedStamp;
-use TMV\Messenger\Exception\InvalidArgumentException;
+use TMV\Laminas\Messenger\Exception\InvalidArgumentException;
 
 final class ContainerHandlersLocator implements HandlersLocatorInterface
 {

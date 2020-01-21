@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace TMV\Messenger\Test\Factory\Middleware;
+namespace TMV\Laminas\Messenger\Test\Factory\Middleware;
 
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\Messenger\Middleware\AddBusNameStampMiddleware;
-use TMV\Messenger\Exception\InvalidArgumentException;
-use TMV\Messenger\Factory\Middleware\AddBusNameStampMiddlewareFactory;
+use TMV\Laminas\Messenger\Exception\InvalidArgumentException;
+use TMV\Laminas\Messenger\Factory\Middleware\AddBusNameStampMiddlewareFactory;
 
 class AddBusNameStampMiddlewareFactoryTest extends TestCase
 {

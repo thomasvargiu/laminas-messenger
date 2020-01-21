@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace TMV\Messenger\Factory;
+namespace TMV\Laminas\Messenger\Factory;
 
 use function array_key_exists;
 use Psr\Container\ContainerInterface;
 use function sprintf;
 use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Messenger\RoutableMessageBus;
-use TMV\Messenger\Exception\InvalidArgumentException;
+use TMV\Laminas\Messenger\Exception\InvalidArgumentException;
 
 final class RoutableMessageBusFactory
 {

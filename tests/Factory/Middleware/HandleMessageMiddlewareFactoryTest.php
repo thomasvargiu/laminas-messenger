@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace TMV\Messenger\Test\Factory\Middleware;
+namespace TMV\Laminas\Messenger\Test\Factory\Middleware;
 
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Messenger\Middleware\HandleMessageMiddleware;
-use TMV\Messenger\Exception\InvalidArgumentException;
-use TMV\Messenger\Factory\Middleware\HandleMessageMiddlewareFactory;
+use TMV\Laminas\Messenger\Exception\InvalidArgumentException;
+use TMV\Laminas\Messenger\Factory\Middleware\HandleMessageMiddlewareFactory;
 
 class HandleMessageMiddlewareFactoryTest extends TestCase
 {

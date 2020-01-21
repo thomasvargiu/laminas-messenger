@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace TMV\Messenger\Factory\Transport;
+namespace TMV\Laminas\Messenger\Factory\Transport;
 
 use function array_key_exists;
 use function is_array;
@@ -13,7 +13,7 @@ use Symfony\Component\Messenger\Transport\Serialization\PhpSerializer;
 use Symfony\Component\Messenger\Transport\Serialization\SerializerInterface;
 use Symfony\Component\Messenger\Transport\TransportFactory as SFTransportFactory;
 use Symfony\Component\Messenger\Transport\TransportInterface;
-use TMV\Messenger\Exception\InvalidArgumentException;
+use TMV\Laminas\Messenger\Exception\InvalidArgumentException;
 
 final class TransportFactory
 {

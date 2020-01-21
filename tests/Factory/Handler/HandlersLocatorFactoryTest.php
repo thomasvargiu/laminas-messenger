@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace TMV\Messenger\Test\Factory\Handler;
+namespace TMV\Laminas\Messenger\Test\Factory\Handler;
 
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\Messenger\Handler\HandlerDescriptor;
 use Symfony\Component\Messenger\Handler\HandlersLocator;
 use Symfony\Component\Messenger\Handler\HandlersLocatorInterface;
-use TMV\Messenger\Factory\Handler\HandlersLocatorFactory;
+use TMV\Laminas\Messenger\Factory\Handler\HandlersLocatorFactory;
 
 class HandlersLocatorFactoryTest extends TestCase
 {

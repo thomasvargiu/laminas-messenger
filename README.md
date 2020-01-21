@@ -32,7 +32,7 @@ how to use it.
 This is an example configuration:
 
 ```php
-use TMV\Messenger\Factory;
+use TMV\Laminas\Messenger\Factory;
 use Symfony\Component\Messenger;
 
 return [

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace TMV\Messenger\Factory\Command;
+namespace TMV\Laminas\Messenger\Factory\Command;
 
 use function array_keys;
 use Psr\Container\ContainerInterface;

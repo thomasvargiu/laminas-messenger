@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace TMV\Messenger\Factory\Transport\Receiver;
+namespace TMV\Laminas\Messenger\Factory\Transport\Receiver;
 
 use function array_key_exists;
 use function array_keys;
 use Laminas\ServiceManager\ServiceManager;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\Messenger\Transport\Receiver\ReceiverInterface;
-use TMV\Messenger\Exception\InvalidArgumentException;
+use TMV\Laminas\Messenger\Exception\InvalidArgumentException;
 
 final class ReceiversLocatorFactory
 {

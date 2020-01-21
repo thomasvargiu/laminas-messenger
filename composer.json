@@ -15,8 +15,8 @@
     ],
     "extra": {
         "laminas": {
-            "component": "TMV\\Messenger",
-            "config-provider": "TMV\\Messenger\\ConfigProvider"
+            "component": "TMV\\Laminas\\Messenger",
+            "config-provider": "TMV\\Laminas\\Messenger\\ConfigProvider"
         }
     },
     "keywords": [
@@ -37,12 +37,12 @@
     ],
     "autoload": {
         "psr-4": {
-            "TMV\\Messenger\\": "src/"
+            "TMV\\Laminas\\Messenger\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "TMV\\Messenger\\Test\\": "tests/"
+            "TMV\\Laminas\\Messenger\\Test\\": "tests/"
         }
     },
     "require": {

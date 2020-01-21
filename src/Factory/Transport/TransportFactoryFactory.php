@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace TMV\Messenger\Factory\Transport;
+namespace TMV\Laminas\Messenger\Factory\Transport;
 
 use function array_map;
 use Psr\Container\ContainerInterface;

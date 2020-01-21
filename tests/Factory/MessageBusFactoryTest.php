@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace TMV\Messenger\Test\Factory;
+namespace TMV\Laminas\Messenger\Test\Factory;
 
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Messenger\MessageBus;
 use Symfony\Component\Messenger\Middleware\MiddlewareInterface;
-use TMV\Messenger\Exception\InvalidArgumentException;
-use TMV\Messenger\Factory\MessageBusFactory;
+use TMV\Laminas\Messenger\Exception\InvalidArgumentException;
+use TMV\Laminas\Messenger\Factory\MessageBusFactory;
 
 class MessageBusFactoryTest extends TestCase
 {

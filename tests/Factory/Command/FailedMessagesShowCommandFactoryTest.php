@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace TMV\Messenger\Test\Factory\Command;
+namespace TMV\Laminas\Messenger\Test\Factory\Command;
 
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\Messenger\Command\FailedMessagesShowCommand;
 use Symfony\Component\Messenger\Transport\TransportInterface;
-use TMV\Messenger\Exception\InvalidArgumentException;
-use TMV\Messenger\Factory\Command\FailedMessagesShowCommandFactory;
+use TMV\Laminas\Messenger\Exception\InvalidArgumentException;
+use TMV\Laminas\Messenger\Factory\Command\FailedMessagesShowCommandFactory;
 
 class FailedMessagesShowCommandFactoryTest extends TestCase
 {

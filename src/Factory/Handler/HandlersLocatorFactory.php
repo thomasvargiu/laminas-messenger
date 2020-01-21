@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace TMV\Messenger\Factory\Handler;
+namespace TMV\Laminas\Messenger\Factory\Handler;
 
 use Psr\Container\ContainerInterface;
 use Symfony\Component\Messenger\Handler\HandlersLocatorInterface;
-use TMV\Messenger\Handler\ContainerHandlersLocator;
+use TMV\Laminas\Messenger\Handler\ContainerHandlersLocator;
 
 final class HandlersLocatorFactory
 {

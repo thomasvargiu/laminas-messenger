@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace TMV\Messenger\Test\Middleware;
+namespace TMV\Laminas\Messenger\Test\Middleware;
 
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\DBAL\Connection;
@@ -12,7 +12,7 @@ use stdClass;
 use Symfony\Component\Messenger\Envelope;
 use Symfony\Component\Messenger\Exception\UnrecoverableMessageHandlingException;
 use Symfony\Component\Messenger\Test\Middleware\MiddlewareTestCase;
-use TMV\Messenger\Middleware\DoctrineTransactionMiddleware;
+use TMV\Laminas\Messenger\Middleware\DoctrineTransactionMiddleware;
 
 class DoctrineTransactionMiddlewareTest extends MiddlewareTestCase
 {

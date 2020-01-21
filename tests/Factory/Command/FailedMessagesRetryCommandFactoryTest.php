@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace TMV\Messenger\Test\Factory\Command;
+namespace TMV\Laminas\Messenger\Test\Factory\Command;
 
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
@@ -11,8 +11,8 @@ use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Messenger\Command\FailedMessagesRetryCommand;
 use Symfony\Component\Messenger\RoutableMessageBus;
 use Symfony\Component\Messenger\Transport\TransportInterface;
-use TMV\Messenger\Exception\InvalidArgumentException;
-use TMV\Messenger\Factory\Command\FailedMessagesRetryCommandFactory;
+use TMV\Laminas\Messenger\Exception\InvalidArgumentException;
+use TMV\Laminas\Messenger\Factory\Command\FailedMessagesRetryCommandFactory;
 
 class FailedMessagesRetryCommandFactoryTest extends TestCase
 {

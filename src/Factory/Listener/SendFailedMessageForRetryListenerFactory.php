@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace TMV\Messenger\Factory\Listener;
+namespace TMV\Laminas\Messenger\Factory\Listener;
 
 use Psr\Container\ContainerInterface;
 use Symfony\Component\Messenger\EventListener\SendFailedMessageForRetryListener;

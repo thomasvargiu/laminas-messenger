@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace TMV\Messenger\Factory\Command;
+namespace TMV\Laminas\Messenger\Factory\Command;
 
 use Psr\Container\ContainerInterface;
 use Symfony\Component\Messenger\Command\FailedMessagesRemoveCommand;
-use TMV\Messenger\Exception\InvalidArgumentException;
+use TMV\Laminas\Messenger\Exception\InvalidArgumentException;
 
 final class FailedMessagesRemoveCommandFactory
 {

@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace TMV\Messenger\Test\Factory;
+namespace TMV\Laminas\Messenger\Test\Factory;
 
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Messenger\RoutableMessageBus;
-use TMV\Messenger\Exception\InvalidArgumentException;
-use TMV\Messenger\Factory\RoutableMessageBusFactory;
+use TMV\Laminas\Messenger\Exception\InvalidArgumentException;
+use TMV\Laminas\Messenger\Factory\RoutableMessageBusFactory;
 
 class RoutableMessageBusFactoryTest extends TestCase
 {

@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace TMV\Messenger\Test\Factory\Transport;
+namespace TMV\Laminas\Messenger\Test\Factory\Transport;
 
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\Messenger\Transport\Serialization\SerializerInterface;
 use Symfony\Component\Messenger\Transport\TransportFactory as SFTransportFactory;
 use Symfony\Component\Messenger\Transport\TransportInterface;
-use TMV\Messenger\Exception\InvalidArgumentException;
-use TMV\Messenger\Factory\Transport\TransportFactory;
+use TMV\Laminas\Messenger\Exception\InvalidArgumentException;
+use TMV\Laminas\Messenger\Factory\Transport\TransportFactory;
 
 class TransportFactoryTest extends TestCase
 {

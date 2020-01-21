@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace TMV\Messenger\Factory\Middleware;
+namespace TMV\Laminas\Messenger\Factory\Middleware;
 
 use function array_key_exists;
 use Psr\Container\ContainerInterface;
 use function sprintf;
 use Symfony\Component\Messenger\Middleware\SendMessageMiddleware;
-use TMV\Messenger\Exception\InvalidArgumentException;
-use TMV\Messenger\Factory\Transport\Sender\SendersLocatorFactory;
+use TMV\Laminas\Messenger\Exception\InvalidArgumentException;
+use TMV\Laminas\Messenger\Factory\Transport\Sender\SendersLocatorFactory;
 
 final class SendMessageMiddlewareFactory
 {

@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace TMV\Messenger\Test\Factory\Command;
+namespace TMV\Laminas\Messenger\Test\Factory\Command;
 
 use PHPUnit\Framework\TestCase;
 use Psr\Cache\CacheItemPoolInterface;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\Messenger\Command\StopWorkersCommand;
-use TMV\Messenger\Exception\InvalidArgumentException;
-use TMV\Messenger\Factory\Command\StopWorkersCommandFactory;
+use TMV\Laminas\Messenger\Exception\InvalidArgumentException;
+use TMV\Laminas\Messenger\Factory\Command\StopWorkersCommandFactory;
 
 class StopWorkersCommandFactoryTest extends TestCase
 {

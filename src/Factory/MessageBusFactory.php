@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace TMV\Messenger\Factory;
+namespace TMV\Laminas\Messenger\Factory;
 
 use function array_key_exists;
 use function array_map;
@@ -16,9 +16,9 @@ use Symfony\Component\Messenger\Middleware\DispatchAfterCurrentBusMiddleware;
 use Symfony\Component\Messenger\Middleware\FailedMessageProcessingMiddleware;
 use Symfony\Component\Messenger\Middleware\MiddlewareInterface;
 use Symfony\Component\Messenger\Middleware\RejectRedeliveredMessageMiddleware;
-use TMV\Messenger\Exception\InvalidArgumentException;
-use TMV\Messenger\Factory\Middleware\HandleMessageMiddlewareFactory;
-use TMV\Messenger\Factory\Middleware\SendMessageMiddlewareFactory;
+use TMV\Laminas\Messenger\Exception\InvalidArgumentException;
+use TMV\Laminas\Messenger\Factory\Middleware\HandleMessageMiddlewareFactory;
+use TMV\Laminas\Messenger\Factory\Middleware\SendMessageMiddlewareFactory;
 
 final class MessageBusFactory
 {

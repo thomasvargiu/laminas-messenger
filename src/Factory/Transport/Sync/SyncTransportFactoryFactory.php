@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace TMV\Messenger\Factory\Transport\Sync;
+namespace TMV\Laminas\Messenger\Factory\Transport\Sync;
 
 use Psr\Container\ContainerInterface;
 use Symfony\Component\Messenger\Transport\Sync\SyncTransportFactory;

@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace TMV\Messenger\Test\Factory\Listener;
+namespace TMV\Laminas\Messenger\Test\Factory\Listener;
 
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Messenger\EventListener\SendFailedMessageToFailureTransportListener;
 use Symfony\Component\Messenger\Transport\TransportInterface;
-use TMV\Messenger\Exception\InvalidArgumentException;
-use TMV\Messenger\Factory\Listener\SendFailedMessageToFailureTransportListenerFactory;
+use TMV\Laminas\Messenger\Exception\InvalidArgumentException;
+use TMV\Laminas\Messenger\Factory\Listener\SendFailedMessageToFailureTransportListenerFactory;
 
 class SendFailedMessageToFailureTransportListenerFactoryTest extends TestCase
 {

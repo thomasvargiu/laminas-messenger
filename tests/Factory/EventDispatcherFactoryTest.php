@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace TMV\Messenger\Test\Factory;
+namespace TMV\Laminas\Messenger\Test\Factory;
 
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
@@ -10,7 +10,7 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Messenger\EventListener\SendFailedMessageForRetryListener;
 use Symfony\Component\Messenger\EventListener\SendFailedMessageToFailureTransportListener;
 use Symfony\Component\Messenger\EventListener\StopWorkerOnRestartSignalListener;
-use TMV\Messenger\Factory\EventDispatcherFactory;
+use TMV\Laminas\Messenger\Factory\EventDispatcherFactory;
 
 class EventDispatcherFactoryTest extends TestCase
 {

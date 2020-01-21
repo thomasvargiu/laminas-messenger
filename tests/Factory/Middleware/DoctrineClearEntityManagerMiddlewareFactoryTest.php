@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace TMV\Messenger\Test\Factory\Middleware;
+namespace TMV\Laminas\Messenger\Test\Factory\Middleware;
 
 use Doctrine\Common\Persistence\ManagerRegistry;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
-use TMV\Messenger\Exception\InvalidArgumentException;
-use TMV\Messenger\Factory\Middleware\DoctrineClearEntityManagerMiddlewareFactory;
-use TMV\Messenger\Middleware\DoctrineClearEntityManagerMiddleware;
+use TMV\Laminas\Messenger\Exception\InvalidArgumentException;
+use TMV\Laminas\Messenger\Factory\Middleware\DoctrineClearEntityManagerMiddlewareFactory;
+use TMV\Laminas\Messenger\Middleware\DoctrineClearEntityManagerMiddleware;
 
 class DoctrineClearEntityManagerMiddlewareFactoryTest extends TestCase
 {

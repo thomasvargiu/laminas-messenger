@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace TMV\Messenger\Factory\Transport\Doctrine;
+namespace TMV\Laminas\Messenger\Factory\Transport\Doctrine;
 
 use Psr\Container\ContainerInterface;
-use TMV\Messenger\Transport\Doctrine\DoctrineDBALTransportFactory;
+use TMV\Laminas\Messenger\Transport\Doctrine\DoctrineDBALTransportFactory;
 
 final class DoctrineDBALTransportFactoryFactory
 {

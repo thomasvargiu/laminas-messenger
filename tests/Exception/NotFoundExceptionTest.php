@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace TMV\Messenger\Test\Exception;
+namespace TMV\Laminas\Messenger\Test\Exception;
 
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
-use TMV\Messenger\Exception\ExceptionInterface;
-use TMV\Messenger\Exception\NotFoundException;
+use TMV\Laminas\Messenger\Exception\ExceptionInterface;
+use TMV\Laminas\Messenger\Exception\NotFoundException;
 
 class NotFoundExceptionTest extends TestCase
 {

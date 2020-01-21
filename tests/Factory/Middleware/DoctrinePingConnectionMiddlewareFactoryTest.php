@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace TMV\Messenger\Test\Factory\Middleware;
+namespace TMV\Laminas\Messenger\Test\Factory\Middleware;
 
 use Doctrine\Common\Persistence\ManagerRegistry;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
-use TMV\Messenger\Exception\InvalidArgumentException;
-use TMV\Messenger\Factory\Middleware\DoctrinePingConnectionMiddlewareFactory;
-use TMV\Messenger\Middleware\DoctrinePingConnectionMiddleware;
+use TMV\Laminas\Messenger\Exception\InvalidArgumentException;
+use TMV\Laminas\Messenger\Factory\Middleware\DoctrinePingConnectionMiddlewareFactory;
+use TMV\Laminas\Messenger\Middleware\DoctrinePingConnectionMiddleware;
 
 class DoctrinePingConnectionMiddlewareFactoryTest extends TestCase
 {

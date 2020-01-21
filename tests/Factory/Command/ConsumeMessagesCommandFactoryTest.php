@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace TMV\Messenger\Test\Factory\Command;
+namespace TMV\Laminas\Messenger\Test\Factory\Command;
 
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
@@ -10,7 +10,7 @@ use Psr\Log\LoggerInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Messenger\Command\ConsumeMessagesCommand;
 use Symfony\Component\Messenger\RoutableMessageBus;
-use TMV\Messenger\Factory\Command\ConsumeMessagesCommandFactory;
+use TMV\Laminas\Messenger\Factory\Command\ConsumeMessagesCommandFactory;
 
 class ConsumeMessagesCommandFactoryTest extends TestCase
 {

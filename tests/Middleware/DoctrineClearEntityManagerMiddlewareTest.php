@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace TMV\Messenger\Test\Middleware;
+namespace TMV\Laminas\Messenger\Test\Middleware;
 
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\ORM\EntityManagerInterface;
@@ -12,7 +12,7 @@ use Symfony\Component\Messenger\Envelope;
 use Symfony\Component\Messenger\Exception\UnrecoverableMessageHandlingException;
 use Symfony\Component\Messenger\Stamp\ReceivedStamp;
 use Symfony\Component\Messenger\Test\Middleware\MiddlewareTestCase;
-use TMV\Messenger\Middleware\DoctrineClearEntityManagerMiddleware;
+use TMV\Laminas\Messenger\Middleware\DoctrineClearEntityManagerMiddleware;
 
 class DoctrineClearEntityManagerMiddlewareTest extends MiddlewareTestCase
 {

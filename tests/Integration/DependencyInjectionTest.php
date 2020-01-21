@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace TMV\Messenger\Test\Integration;
+namespace TMV\Laminas\Messenger\Test\Integration;
 
 use Laminas\ConfigAggregator\ArrayProvider;
 use Laminas\ConfigAggregator\ConfigAggregator;
@@ -12,11 +12,11 @@ use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\Messenger\Command\ConsumeMessagesCommand;
 use Symfony\Component\Messenger\MessageBusInterface;
-use TMV\Messenger\ConfigProvider;
-use TMV\Messenger\Factory\MessageBusFactory;
-use TMV\Messenger\Factory\Transport\TransportFactory;
-use TMV\Messenger\Test\Integration\Stubs\Command\CommandStub;
-use TMV\Messenger\Test\Integration\Stubs\Handler\TestHandler;
+use TMV\Laminas\Messenger\ConfigProvider;
+use TMV\Laminas\Messenger\Factory\MessageBusFactory;
+use TMV\Laminas\Messenger\Factory\Transport\TransportFactory;
+use TMV\Laminas\Messenger\Test\Integration\Stubs\Command\CommandStub;
+use TMV\Laminas\Messenger\Test\Integration\Stubs\Handler\TestHandler;
 
 /**
  * @coversNothing

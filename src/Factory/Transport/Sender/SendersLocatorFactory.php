@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace TMV\Messenger\Factory\Transport\Sender;
+namespace TMV\Laminas\Messenger\Factory\Transport\Sender;
 
 use function class_exists;
 use function interface_exists;
@@ -10,7 +10,7 @@ use Psr\Container\ContainerInterface;
 use function sprintf;
 use Symfony\Component\Messenger\Transport\Sender\SendersLocator;
 use Symfony\Component\Messenger\Transport\Sender\SendersLocatorInterface;
-use TMV\Messenger\Exception\LogicException;
+use TMV\Laminas\Messenger\Exception\LogicException;
 
 final class SendersLocatorFactory
 {

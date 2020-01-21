@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace TMV\Messenger\Test\Factory\Command;
+namespace TMV\Laminas\Messenger\Test\Factory\Command;
 
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\Messenger\Command\SetupTransportsCommand;
-use TMV\Messenger\Factory\Command\SetupTransportsCommandFactory;
+use TMV\Laminas\Messenger\Factory\Command\SetupTransportsCommandFactory;
 
 class SetupTransportsCommandFactoryTest extends TestCase
 {

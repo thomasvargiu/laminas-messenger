@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace TMV\Messenger\Factory\Listener;
+namespace TMV\Laminas\Messenger\Factory\Listener;
 
 use Psr\Container\ContainerInterface;
 use Symfony\Component\Messenger\EventListener\SendFailedMessageToFailureTransportListener;
-use TMV\Messenger\Exception\InvalidArgumentException;
+use TMV\Laminas\Messenger\Exception\InvalidArgumentException;
 
 final class SendFailedMessageToFailureTransportListenerFactory
 {

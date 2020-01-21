@@ -1,0 +1,103 @@
+{
+    "name": "thomasvargiu/laminas-messenger",
+    "description": "Factories to use the Symfony Messenger in Laminas and Mezzio applications",
+    "type": "library",
+    "license": "MIT",
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "stable",
+    "authors": [
+        {
+            "name": "Thomas Vargiu",
+            "email": "tvargiu@gmail.com"
+        }
+    ],
+    "extra": {
+        "laminas": {
+            "component": "TMV\\Messenger",
+            "config-provider": "TMV\\Messenger\\ConfigProvider"
+        }
+    },
+    "keywords": [
+        "message",
+        "factory",
+        "messenger",
+        "messaging",
+        "service bus",
+        "bus",
+        "symfony",
+        "symfony messenger",
+        "amqp",
+        "module",
+        "zend",
+        "expressive",
+        "laminas",
+        "mezzio"
+    ],
+    "autoload": {
+        "psr-4": {
+            "TMV\\Messenger\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "TMV\\Messenger\\Test\\": "tests/"
+        }
+    },
+    "require": {
+        "php": "^7.2",
+        "psr/container": "^1.0",
+        "symfony/event-dispatcher": "^4.0 || ^5.0",
+        "symfony/messenger": "^4.4 || ^5.0",
+        "laminas/laminas-servicemanager": "^3.0"
+    },
+    "conflict": {
+        "container-interop/container-interop": "<1.2"
+    },
+    "require-dev": {
+        "doctrine/dbal": "^2.7",
+        "doctrine/orm": "^2.4",
+        "facile-it/facile-coding-standard": "^0.3.1",
+        "friendsofphp/php-cs-fixer": "^2.16.1",
+        "phpstan/phpstan": "^0.12.7",
+        "phpunit/phpunit": "^8.5.2",
+        "psr/cache": "^1.0",
+        "psr/log": "^1.1",
+        "symfony/contracts": "^1.0 || ^2.0",
+        "phpspec/prophecy": "^1.10.2",
+        "vimeo/psalm": "^3.8.3",
+        "laminas/laminas-config-aggregator": "^1.1"
+    },
+    "suggest": {
+        "doctrine/dbal": "To use doctrine transport",
+        "doctrine/orm": "To use doctrine ORM middlewares",
+        "psr/cache-implementation": "To use stop workers command"
+    },
+    "scripts": {
+        "cs-check": "php-cs-fixer fix --dry-run --diff",
+        "cs-fix": "php-cs-fixer fix --diff",
+        "test": [
+            "@phpunit"
+        ],
+        "test-all": [
+            "@cs-check",
+            "@phpstan",
+            "@psalm",
+            "@phpunit"
+        ],
+        "ci-test-all": [
+            "@cs-check",
+            "@phpstan",
+            "@psalm",
+            "@ci-phpunit"
+        ],
+        "ci-test": [
+            "@ci-phpunit"
+        ],
+        "psalm": "psalm --show-info=false",
+        "phpstan": "phpstan analyse",
+        "phpunit": "phpunit",
+        "ci-phpunit": "phpunit --coverage-clover=coverage.clover"
+    }
+}

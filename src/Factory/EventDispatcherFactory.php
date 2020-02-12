@@ -7,9 +7,11 @@ namespace TMV\Laminas\Messenger\Factory;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use Symfony\Component\Messenger\EventListener\DispatchPcntlSignalListener;
 use Symfony\Component\Messenger\EventListener\SendFailedMessageForRetryListener;
 use Symfony\Component\Messenger\EventListener\SendFailedMessageToFailureTransportListener;
 use Symfony\Component\Messenger\EventListener\StopWorkerOnRestartSignalListener;
+use Symfony\Component\Messenger\EventListener\StopWorkerOnSigtermSignalListener;
 
 final class EventDispatcherFactory
 {
@@ -20,6 +22,8 @@ final class EventDispatcherFactory
 
         $eventDispatcher = new EventDispatcher();
 
+        $eventDispatcher->addSubscriber($container->get(DispatchPcntlSignalListener::class));
+        $eventDispatcher->addSubscriber($container->get(StopWorkerOnSigtermSignalListener::class));
         $eventDispatcher->addSubscriber($container->get(SendFailedMessageForRetryListener::class));
 
         $failureTransport = $config['messenger']['failure_transport'] ?? null;

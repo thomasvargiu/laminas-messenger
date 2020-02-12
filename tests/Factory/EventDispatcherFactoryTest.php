@@ -7,13 +7,51 @@ namespace TMV\Laminas\Messenger\Test\Factory;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use Symfony\Component\Messenger\EventListener\DispatchPcntlSignalListener;
 use Symfony\Component\Messenger\EventListener\SendFailedMessageForRetryListener;
 use Symfony\Component\Messenger\EventListener\SendFailedMessageToFailureTransportListener;
 use Symfony\Component\Messenger\EventListener\StopWorkerOnRestartSignalListener;
+use Symfony\Component\Messenger\EventListener\StopWorkerOnSigtermSignalListener;
 use TMV\Laminas\Messenger\Factory\EventDispatcherFactory;
 
 class EventDispatcherFactoryTest extends TestCase
 {
+    private function getListeners(): array
+    {
+        return [
+            'event1' => new class() implements EventSubscriberInterface {
+                public static function getSubscribedEvents(): array
+                {
+                    return ['event1' => ['bar', -100]];
+                }
+            },
+            'event2' => new class() implements EventSubscriberInterface {
+                public static function getSubscribedEvents(): array
+                {
+                    return ['event2' => ['bar', -100]];
+                }
+            },
+            'event3' => new class() implements EventSubscriberInterface {
+                public static function getSubscribedEvents(): array
+                {
+                    return ['event3' => ['bar', -100]];
+                }
+            },
+            'event4' => new class() implements EventSubscriberInterface {
+                public static function getSubscribedEvents(): array
+                {
+                    return ['event4' => ['bar', -100]];
+                }
+            },
+            'event5' => new class() implements EventSubscriberInterface {
+                public static function getSubscribedEvents(): array
+                {
+                    return ['event5' => ['bar', -100]];
+                }
+            },
+        ];
+    }
+
     public function testFactoryWithDefaults(): void
     {
         $container = $this->prophesize(ContainerInterface::class);
@@ -24,15 +62,15 @@ class EventDispatcherFactoryTest extends TestCase
             ],
         ]);
 
-        $sendFailedMessageForRetryListener = new class() implements EventSubscriberInterface {
-            public static function getSubscribedEvents(): array
-            {
-                return ['foo' => ['bar', -100]];
-            }
-        };
+        $container->get(StopWorkerOnSigtermSignalListener::class)
+            ->shouldBeCalled()
+            ->willReturn($this->getListeners()['event1']);
+        $container->get(DispatchPcntlSignalListener::class)
+            ->shouldBeCalled()
+            ->willReturn($this->getListeners()['event2']);
         $container->get(SendFailedMessageForRetryListener::class)
             ->shouldBeCalled()
-            ->willReturn($sendFailedMessageForRetryListener);
+            ->willReturn($this->getListeners()['event3']);
 
         $container->get(SendFailedMessageToFailureTransportListener::class)
             ->shouldNotBeCalled();
@@ -41,10 +79,7 @@ class EventDispatcherFactoryTest extends TestCase
 
         $instance = $factory($container->reveal());
 
-        // this should instantiate the service
-        $listeners = $instance->getListeners('foo');
-
-        $this->assertCount(1, $listeners);
+        $this->assertCount(3, $instance->getListeners());
     }
 
     public function testFactoryWithFailureTransport(): void
@@ -58,36 +93,24 @@ class EventDispatcherFactoryTest extends TestCase
             ],
         ]);
 
-        $listener = new class() implements EventSubscriberInterface {
-            public static function getSubscribedEvents(): array
-            {
-                return ['foo' => ['bar', -100]];
-            }
-        };
-
-        $sendFailedMessageForRetryListener = new class() implements EventSubscriberInterface {
-            public static function getSubscribedEvents(): array
-            {
-                return ['default1' => ['bar', -100]];
-            }
-        };
+        $container->get(StopWorkerOnSigtermSignalListener::class)
+            ->shouldBeCalled()
+            ->willReturn($this->getListeners()['event1']);
+        $container->get(DispatchPcntlSignalListener::class)
+            ->shouldBeCalled()
+            ->willReturn($this->getListeners()['event2']);
         $container->get(SendFailedMessageForRetryListener::class)
             ->shouldBeCalled()
-            ->willReturn($sendFailedMessageForRetryListener);
-
+            ->willReturn($this->getListeners()['event3']);
         $container->get(SendFailedMessageToFailureTransportListener::class)
             ->shouldBeCalled()
-            ->willReturn($listener);
+            ->willReturn($this->getListeners()['event4']);
 
         $factory = new EventDispatcherFactory();
 
         $instance = $factory($container->reveal());
 
-        // this should instantiate the service
-        $listeners = $instance->getListeners('foo');
-
-        $this->assertCount(1, $listeners);
-        $this->assertSame([$listener, 'bar'], $listeners[0]);
+        $this->assertCount(4, $instance->getListeners());
     }
 
     public function testFactoryWithStopWorkerListener(): void
@@ -101,35 +124,23 @@ class EventDispatcherFactoryTest extends TestCase
             ],
         ]);
 
-        $listener = new class() implements EventSubscriberInterface {
-            public static function getSubscribedEvents(): array
-            {
-                return ['foo' => ['bar', -100]];
-            }
-        };
-
-        $sendFailedMessageForRetryListener = new class() implements EventSubscriberInterface {
-            public static function getSubscribedEvents(): array
-            {
-                return ['default1' => ['bar', -100]];
-            }
-        };
+        $container->get(StopWorkerOnSigtermSignalListener::class)
+            ->shouldBeCalled()
+            ->willReturn($this->getListeners()['event1']);
+        $container->get(DispatchPcntlSignalListener::class)
+            ->shouldBeCalled()
+            ->willReturn($this->getListeners()['event2']);
         $container->get(SendFailedMessageForRetryListener::class)
             ->shouldBeCalled()
-            ->willReturn($sendFailedMessageForRetryListener);
-
+            ->willReturn($this->getListeners()['event3']);
         $container->get(StopWorkerOnRestartSignalListener::class)
             ->shouldBeCalled()
-            ->willReturn($listener);
+            ->willReturn($this->getListeners()['event4']);
 
         $factory = new EventDispatcherFactory();
 
         $instance = $factory($container->reveal());
 
-        // this should instantiate the service
-        $listeners = $instance->getListeners('foo');
-
-        $this->assertCount(1, $listeners);
-        $this->assertSame([$listener, 'bar'], $listeners[0]);
+        $this->assertCount(4, $instance->getListeners());
     }
 }

@@ -30,6 +30,8 @@ class ConfigProvider
                 SFMessenger\Transport\Sender\SendersLocator::class => Factory\Transport\Sender\SendersLocatorFactory::class,
                 SFMessenger\Transport\Serialization\PhpSerializer::class => InvokableFactory::class,
                 SFMessenger\Transport\Serialization\Serializer::class => InvokableFactory::class,
+                SFMessenger\EventListener\DispatchPcntlSignalListener::class => InvokableFactory::class,
+                SFMessenger\EventListener\StopWorkerOnSigtermSignalListener::class => InvokableFactory::class,
                 SFMessenger\EventListener\SendFailedMessageForRetryListener::class => Factory\Listener\SendFailedMessageForRetryListenerFactory::class,
                 SFMessenger\EventListener\SendFailedMessageToFailureTransportListener::class => Factory\Listener\SendFailedMessageToFailureTransportListenerFactory::class,
                 SFMessenger\EventListener\StopWorkerOnRestartSignalListener::class => Factory\Listener\StopWorkerOnRestartSignalListenerFactory::class,

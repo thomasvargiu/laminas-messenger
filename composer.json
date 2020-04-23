@@ -67,7 +67,8 @@
         "symfony/contracts": "^1.0 || ^2.0",
         "phpspec/prophecy": "^1.10.2",
         "vimeo/psalm": "^3.8.3",
-        "laminas/laminas-config-aggregator": "^1.1"
+        "laminas/laminas-config-aggregator":
+        "^1.1"
     },
     "suggest": {
         "doctrine/dbal": "To use doctrine transport",

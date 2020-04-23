@@ -10,7 +10,7 @@ use InvalidArgumentException;
 use stdClass;
 use Symfony\Component\Messenger\Envelope;
 use Symfony\Component\Messenger\Exception\UnrecoverableMessageHandlingException;
-use Symfony\Component\Messenger\Stamp\ReceivedStamp;
+use Symfony\Component\Messenger\Stamp\ConsumedByWorkerStamp;
 use Symfony\Component\Messenger\Test\Middleware\MiddlewareTestCase;
 use TMV\Laminas\Messenger\Middleware\DoctrineClearEntityManagerMiddleware;
 
@@ -28,8 +28,23 @@ class DoctrineClearEntityManagerMiddlewareTest extends MiddlewareTestCase
             ->willReturn($entityManager);
         $middleware = new DoctrineClearEntityManagerMiddleware($managerRegistry, 'default');
         $envelope = new Envelope(new stdClass(), [
-            new ReceivedStamp('async'),
+            new ConsumedByWorkerStamp(),
         ]);
+        $middleware->handle($envelope, $this->getStackMock());
+    }
+
+    public function testMiddlewareShouldNotClearEntityManagerIfNotConsumedByWorker(): void
+    {
+        $entityManager = $this->createMock(EntityManagerInterface::class);
+        $entityManager->expects($this->never())
+            ->method('clear');
+        $managerRegistry = $this->createMock(ManagerRegistry::class);
+        $managerRegistry
+            ->method('getManager')
+            ->with('default')
+            ->willReturn($entityManager);
+        $middleware = new DoctrineClearEntityManagerMiddleware($managerRegistry, 'default');
+        $envelope = new Envelope(new stdClass());
         $middleware->handle($envelope, $this->getStackMock());
     }
 

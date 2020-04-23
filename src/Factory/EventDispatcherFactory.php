@@ -4,9 +4,12 @@ declare(strict_types=1);
 
 namespace TMV\Laminas\Messenger\Factory;
 
+use function array_map;
+use function array_merge;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Messenger\EventListener\DispatchPcntlSignalListener;
 use Symfony\Component\Messenger\EventListener\SendFailedMessageForRetryListener;
 use Symfony\Component\Messenger\EventListener\SendFailedMessageToFailureTransportListener;
@@ -22,21 +25,32 @@ final class EventDispatcherFactory
 
         $eventDispatcher = new EventDispatcher();
 
-        $eventDispatcher->addSubscriber($container->get(DispatchPcntlSignalListener::class));
-        $eventDispatcher->addSubscriber($container->get(StopWorkerOnSigtermSignalListener::class));
-        $eventDispatcher->addSubscriber($container->get(SendFailedMessageForRetryListener::class));
+        /** @var EventSubscriberInterface[] $subscribers */
+        $subscribers = [
+            DispatchPcntlSignalListener::class,
+            StopWorkerOnSigtermSignalListener::class,
+            SendFailedMessageForRetryListener::class,
+        ];
 
         $failureTransport = $config['messenger']['failure_transport'] ?? null;
 
-        if ($failureTransport) {
-            $eventDispatcher->addSubscriber($container->get(SendFailedMessageToFailureTransportListener::class));
+        if (null !== $failureTransport) {
+            $subscribers[] = SendFailedMessageToFailureTransportListener::class;
         }
 
         $cachePoolForRestartSignal = $config['messenger']['cache_pool_for_restart_signal'] ?? null;
 
         if ($cachePoolForRestartSignal) {
-            $eventDispatcher->addSubscriber($container->get(StopWorkerOnRestartSignalListener::class));
+            $subscribers[] = StopWorkerOnRestartSignalListener::class;
         }
+
+        /** @var string[] $subscribers */
+        $subscribers = array_merge(
+            $config['messenger']['subscribers'] ?? [],
+            $subscribers
+        );
+
+        array_map([$eventDispatcher, 'addSubscriber'], array_map([$container, 'get'], $subscribers));
 
         return $eventDispatcher;
     }

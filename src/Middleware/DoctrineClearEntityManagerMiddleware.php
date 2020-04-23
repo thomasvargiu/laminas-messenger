@@ -7,8 +7,11 @@ namespace TMV\Laminas\Messenger\Middleware;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Messenger\Envelope;
 use Symfony\Component\Messenger\Middleware\StackInterface;
-use Symfony\Component\Messenger\Stamp\ReceivedStamp;
+use Symfony\Component\Messenger\Stamp\ConsumedByWorkerStamp;
 
+/**
+ * @deprecated This middleware is deprecated and will be removed in 2.0.
+ */
 class DoctrineClearEntityManagerMiddleware extends AbstractDoctrineMiddleware
 {
     protected function handleForManager(
@@ -19,7 +22,7 @@ class DoctrineClearEntityManagerMiddleware extends AbstractDoctrineMiddleware
         try {
             return $stack->next()->handle($envelope, $stack);
         } finally {
-            if (null !== $envelope->last(ReceivedStamp::class)) {
+            if (null !== $envelope->last(ConsumedByWorkerStamp::class)) {
                 $entityManager->clear();
             }
         }

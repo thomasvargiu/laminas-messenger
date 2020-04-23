@@ -7,7 +7,7 @@ namespace TMV\Laminas\Messenger\Middleware;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Messenger\Envelope;
 use Symfony\Component\Messenger\Middleware\StackInterface;
-use Symfony\Component\Messenger\Stamp\ReceivedStamp;
+use Symfony\Component\Messenger\Stamp\ConsumedByWorkerStamp;
 
 class DoctrinePingConnectionMiddleware extends AbstractDoctrineMiddleware
 {
@@ -16,7 +16,7 @@ class DoctrinePingConnectionMiddleware extends AbstractDoctrineMiddleware
         Envelope $envelope,
         StackInterface $stack
     ): Envelope {
-        if (null !== $envelope->last(ReceivedStamp::class)) {
+        if (null !== $envelope->last(ConsumedByWorkerStamp::class)) {
             $this->pingConnection($entityManager);
         }
 

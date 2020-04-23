@@ -11,7 +11,7 @@ use InvalidArgumentException;
 use stdClass;
 use Symfony\Component\Messenger\Envelope;
 use Symfony\Component\Messenger\Exception\UnrecoverableMessageHandlingException;
-use Symfony\Component\Messenger\Stamp\ReceivedStamp;
+use Symfony\Component\Messenger\Stamp\ConsumedByWorkerStamp;
 use Symfony\Component\Messenger\Test\Middleware\MiddlewareTestCase;
 use TMV\Laminas\Messenger\Middleware\DoctrinePingConnectionMiddleware;
 
@@ -50,7 +50,7 @@ class DoctrinePingConnectionMiddlewareTest extends MiddlewareTestCase
         $this->connection->expects($this->once())
             ->method('connect');
         $envelope = new Envelope(new stdClass(), [
-            new ReceivedStamp('async'),
+            new ConsumedByWorkerStamp(),
         ]);
         $this->middleware->handle($envelope, $this->getStackMock());
     }
@@ -64,7 +64,7 @@ class DoctrinePingConnectionMiddlewareTest extends MiddlewareTestCase
             ->method('resetManager')
             ->with($this->entityManagerName);
         $envelope = new Envelope(new stdClass(), [
-            new ReceivedStamp('async'),
+            new ConsumedByWorkerStamp(),
         ]);
         $this->middleware->handle($envelope, $this->getStackMock());
     }

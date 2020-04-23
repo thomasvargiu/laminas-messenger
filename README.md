@@ -50,6 +50,7 @@ return [
         'transport_factories' => [
             // here you can add your custom transport factories services
         ],
+        'subscribers' => [], // Subscribers (service name) to use with the default event dispatcher factory
         'buses' => [
             'messenger.bus.foo' => [ // bus service name, it should be registered as a service with the same name
                 'default_middleware' => true, // if you want to include default middleware (default: true)
@@ -90,3 +91,26 @@ return [
     ],
 ];
 ```
+
+## Doctrine Helpers
+
+### Middlewares
+There are some middleware available for Doctrine:
+
+#### `TMV\Laminas\Messenger\Middleware\DoctrineCloseConnectionMiddleware`
+
+Close connection on every message consumed by the worker.
+
+#### `TMV\Laminas\Messenger\Middleware\DoctrinePingConnectionMiddleware`
+
+Before to handle a message on worker, ping to check whether the connection is open or try to reconnect it.
+
+#### `TMV\Laminas\Messenger\Middleware\DoctrineTransactionMiddleware`
+
+For every message, wrap the message handler with a transaction.
+
+### Subscribers
+
+#### `TMV\Laminas\Messenger\Subscriber\DoctrineClearEntityManagerWorkerSubscriber`
+
+This subscriber clear the EntityManager after a message is handled in a worker.

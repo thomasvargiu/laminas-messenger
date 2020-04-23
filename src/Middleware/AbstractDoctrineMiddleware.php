@@ -14,10 +14,10 @@ use Symfony\Component\Messenger\Middleware\StackInterface;
 
 abstract class AbstractDoctrineMiddleware implements MiddlewareInterface
 {
-    /** @var ManagerRegistry $managerRegistry */
+    /** @var ManagerRegistry */
     protected $managerRegistry;
 
-    /** @var string|null $entityManagerName */
+    /** @var string|null */
     protected $entityManagerName;
 
     public function __construct(ManagerRegistry $managerRegistry, ?string $entityManagerName = null)

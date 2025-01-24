@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace TMV\Laminas\Messenger\Test\Factory\Transport\Sender;
 
 use Prophecy\PhpUnit\ProphecyTrait;
-use function iterator_to_array;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\Messenger\Envelope;
@@ -15,9 +14,12 @@ use TMV\Laminas\Messenger\Exception\LogicException;
 use TMV\Laminas\Messenger\Factory\Transport\Sender\SendersLocatorFactory;
 use TMV\Laminas\Messenger\Test\Factory\MessageMock;
 
+use function iterator_to_array;
+
 class SendersLocatorFactoryTest extends TestCase
 {
     use ProphecyTrait;
+
     public function testFactory(): void
     {
         $container = $this->prophesize(ContainerInterface::class);

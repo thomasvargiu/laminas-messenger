@@ -16,6 +16,7 @@ use TMV\Laminas\Messenger\Test\Factory\MessageMock;
 class ContainerHandlersLocatorTest extends TestCase
 {
     use ProphecyTrait;
+
     public function testItYieldsHandlerDescriptors(): void
     {
         $container = $this->prophesize(ContainerInterface::class);
@@ -68,7 +69,5 @@ class ContainerHandlersLocatorTest extends TestCase
 
 class HandlersLocatorTestCallable
 {
-    public function __invoke()
-    {
-    }
+    public function __invoke() {}
 }

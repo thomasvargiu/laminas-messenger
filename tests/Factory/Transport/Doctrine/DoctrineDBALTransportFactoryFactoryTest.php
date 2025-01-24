@@ -14,6 +14,7 @@ use TypeError;
 class DoctrineDBALTransportFactoryFactoryTest extends TestCase
 {
     use ProphecyTrait;
+
     public function testFactory(): void
     {
         $container = $this->prophesize(ContainerInterface::class);

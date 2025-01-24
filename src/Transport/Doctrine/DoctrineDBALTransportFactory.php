@@ -6,14 +6,15 @@ namespace TMV\Laminas\Messenger\Transport\Doctrine;
 
 use InvalidArgumentException;
 use Psr\Container\ContainerInterface;
-use function sprintf;
-use function strpos;
 use Symfony\Component\Messenger\Exception\TransportException;
 use Symfony\Component\Messenger\Bridge\Doctrine\Transport\Connection;
 use Symfony\Component\Messenger\Bridge\Doctrine\Transport\DoctrineTransport;
 use Symfony\Component\Messenger\Transport\Serialization\SerializerInterface;
 use Symfony\Component\Messenger\Transport\TransportFactoryInterface;
 use Symfony\Component\Messenger\Transport\TransportInterface;
+
+use function sprintf;
+use function strpos;
 
 class DoctrineDBALTransportFactory implements TransportFactoryInterface
 {
@@ -25,11 +26,7 @@ class DoctrineDBALTransportFactory implements TransportFactoryInterface
     }
 
     /**
-     * @param string $dsn
      * @param array<string, mixed> $options
-     * @param SerializerInterface $serializer
-     *
-     * @return TransportInterface
      */
     public function createTransport(string $dsn, array $options, SerializerInterface $serializer): TransportInterface
     {
@@ -47,10 +44,7 @@ class DoctrineDBALTransportFactory implements TransportFactoryInterface
     }
 
     /**
-     * @param string $dsn
      * @param array<string, mixed> $options
-     *
-     * @return bool
      */
     public function supports(string $dsn, array $options): bool
     {

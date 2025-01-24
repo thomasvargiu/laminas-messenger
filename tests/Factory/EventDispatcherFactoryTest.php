@@ -18,34 +18,35 @@ use TMV\Laminas\Messenger\Factory\EventDispatcherFactory;
 class EventDispatcherFactoryTest extends TestCase
 {
     use ProphecyTrait;
+
     private function getListeners(): array
     {
         return [
-            'event1' => new class() implements EventSubscriberInterface {
+            'event1' => new class implements EventSubscriberInterface {
                 public static function getSubscribedEvents(): array
                 {
                     return ['event1' => ['bar', -100]];
                 }
             },
-            'event2' => new class() implements EventSubscriberInterface {
+            'event2' => new class implements EventSubscriberInterface {
                 public static function getSubscribedEvents(): array
                 {
                     return ['event2' => ['bar', -100]];
                 }
             },
-            'event3' => new class() implements EventSubscriberInterface {
+            'event3' => new class implements EventSubscriberInterface {
                 public static function getSubscribedEvents(): array
                 {
                     return ['event3' => ['bar', -100]];
                 }
             },
-            'event4' => new class() implements EventSubscriberInterface {
+            'event4' => new class implements EventSubscriberInterface {
                 public static function getSubscribedEvents(): array
                 {
                     return ['event4' => ['bar', -100]];
                 }
             },
-            'event5' => new class() implements EventSubscriberInterface {
+            'event5' => new class implements EventSubscriberInterface {
                 public static function getSubscribedEvents(): array
                 {
                     return ['event5' => ['bar', -100]];

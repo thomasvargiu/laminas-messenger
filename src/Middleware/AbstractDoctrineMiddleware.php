@@ -14,7 +14,6 @@ use Symfony\Component\Messenger\Middleware\StackInterface;
 
 abstract class AbstractDoctrineMiddleware implements MiddlewareInterface
 {
-    /** @var ManagerRegistry */
     protected ManagerRegistry $managerRegistry;
 
     /** @var string|null */

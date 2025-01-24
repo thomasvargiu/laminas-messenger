@@ -9,6 +9,9 @@ use Psr\Container\ContainerInterface;
 use Symfony\Component\Messenger\Middleware\MiddlewareInterface;
 use TMV\Laminas\Messenger\Middleware\DoctrineTransactionMiddleware;
 
+/**
+ * @psalm-api
+ */
 final class DoctrineTransactionMiddlewareFactory extends AbstractDoctrineMiddlewareFactory
 {
     public function __invoke(ContainerInterface $container): MiddlewareInterface

@@ -4,12 +4,16 @@ declare(strict_types=1);
 
 namespace TMV\Laminas\Messenger\Factory\Middleware;
 
-use function array_key_exists;
 use Psr\Container\ContainerInterface;
-use function sprintf;
 use Symfony\Component\Messenger\Middleware\AddBusNameStampMiddleware;
 use TMV\Laminas\Messenger\Exception\InvalidArgumentException;
 
+use function array_key_exists;
+use function sprintf;
+
+/**
+ * @psalm-api
+ */
 final class AddBusNameStampMiddlewareFactory
 {
     private string $busName;
@@ -25,10 +29,9 @@ final class AddBusNameStampMiddlewareFactory
     }
 
     /**
-     * @param string $name
-     * @param array<int, mixed> $arguments
+     * @psalm-api
      *
-     * @return AddBusNameStampMiddleware
+     * @param array<int, mixed> $arguments
      */
     public static function __callStatic(string $name, array $arguments): AddBusNameStampMiddleware
     {

@@ -14,6 +14,7 @@ use TMV\Laminas\Messenger\Factory\Middleware\AddBusNameStampMiddlewareFactory;
 class AddBusNameStampMiddlewareFactoryTest extends TestCase
 {
     use ProphecyTrait;
+
     public function testFactory(): void
     {
         $factory = [AddBusNameStampMiddlewareFactory::class, 'bus_name'];

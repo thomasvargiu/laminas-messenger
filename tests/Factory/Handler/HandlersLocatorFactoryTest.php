@@ -15,6 +15,7 @@ use TMV\Laminas\Messenger\Factory\Handler\HandlersLocatorFactory;
 class HandlersLocatorFactoryTest extends TestCase
 {
     use ProphecyTrait;
+
     public function testFactory(): void
     {
         $factory = new HandlersLocatorFactory('bus_name');
@@ -28,10 +29,8 @@ class HandlersLocatorFactoryTest extends TestCase
                         'handlers' => [
                             'foo' => [
                                 'handler1',
-                                static function () {
-                                },
-                                new HandlerDescriptor(static function () {
-                                }),
+                                static function () {},
+                                new HandlerDescriptor(static function () {}),
                             ],
                         ],
                     ],

@@ -10,6 +10,9 @@ use Symfony\Contracts\Service\ServiceProviderInterface;
 use TMV\Laminas\Messenger\Exception\InvalidArgumentException;
 use TMV\Laminas\Messenger\ServiceProvider;
 
+/**
+ * @psalm-api
+ */
 final class FailedMessagesShowCommandFactory
 {
     public function __invoke(ContainerInterface $container): FailedMessagesShowCommand

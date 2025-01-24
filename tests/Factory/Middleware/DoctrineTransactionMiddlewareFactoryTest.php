@@ -15,6 +15,7 @@ use TMV\Laminas\Messenger\Middleware\DoctrineTransactionMiddleware;
 class DoctrineTransactionMiddlewareFactoryTest extends TestCase
 {
     use ProphecyTrait;
+
     public function testFactory(): void
     {
         $container = $this->prophesize(ContainerInterface::class);

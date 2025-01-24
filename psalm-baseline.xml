@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<files psalm-version="5.26.1@d747f6500b38ac4f7dfc5edbcae6e4b637d7add0">
+  <file src="src/ConfigProvider.php">
+    <DeprecatedClass>
+      <code><![CDATA[SFMessenger\Transport\AmqpExt\AmqpTransportFactory::class]]></code>
+      <code><![CDATA[SFMessenger\Transport\AmqpExt\AmqpTransportFactory::class]]></code>
+      <code><![CDATA[SFMessenger\Transport\Doctrine\DoctrineTransportFactory::class]]></code>
+      <code><![CDATA[SFMessenger\Transport\RedisExt\RedisTransportFactory::class]]></code>
+      <code><![CDATA[SFMessenger\Transport\RedisExt\RedisTransportFactory::class]]></code>
+    </DeprecatedClass>
+  </file>
+  <file src="src/Factory/Command/ConsumeMessagesCommandFactory.php">
+    <MixedArgument>
+      <code><![CDATA[$container->get($eventDispatcher)]]></code>
+      <code><![CDATA[$container->get('messenger.receivers_locator')]]></code>
+      <code><![CDATA[$eventDispatcher]]></code>
+      <code><![CDATA[$logger]]></code>
+      <code><![CDATA[$logger ? $container->get($logger) : null]]></code>
+      <code><![CDATA[$transports]]></code>
+    </MixedArgument>
+    <MixedArrayAccess>
+      <code><![CDATA[$config['messenger']]]></code>
+      <code><![CDATA[$config['messenger']]]></code>
+      <code><![CDATA[$config['messenger']]]></code>
+      <code><![CDATA[$config['messenger']['event_dispatcher']]]></code>
+      <code><![CDATA[$config['messenger']['logger']]]></code>
+      <code><![CDATA[$config['messenger']['transports']]]></code>
+    </MixedArrayAccess>
+    <MixedAssignment>
+      <code><![CDATA[$config]]></code>
+      <code><![CDATA[$eventDispatcher]]></code>
+      <code><![CDATA[$logger]]></code>
+      <code><![CDATA[$transports]]></code>
+    </MixedAssignment>
+    <RiskyTruthyFalsyComparison>
+      <code><![CDATA[$logger]]></code>
+    </RiskyTruthyFalsyComparison>
+  </file>
+  <file src="src/Factory/Command/FailedMessagesRemoveCommandFactory.php">
+    <InternalMethod>
+      <code><![CDATA[new FailedMessagesRemoveCommand(
+            $failureTransportName,
+            new ServiceProvider([
+                $failureTransportName => static function () use ($receiverLocator, $failureTransportName) { return $receiverLocator->get($failureTransportName); },
+            ]),
+        )]]></code>
+    </InternalMethod>
+    <MissingClosureReturnType>
+      <code><![CDATA[static function () use ($receiverLocator, $failureTransportName) { return $receiverLocator->get($failureTransportName); }]]></code>
+    </MissingClosureReturnType>
+  </file>
+  <file src="src/Factory/Command/FailedMessagesRetryCommandFactory.php">
+    <MissingClosureReturnType>
+      <code><![CDATA[static function () use ($receiverLocator, $failureTransportName) { return $receiverLocator->get($failureTransportName); }]]></code>
+    </MissingClosureReturnType>
+    <MixedArgument>
+      <code><![CDATA[$container->get($eventDispatcher)]]></code>
+      <code><![CDATA[$eventDispatcher]]></code>
+      <code><![CDATA[$logger ? $container->get($logger) : null]]></code>
+    </MixedArgument>
+    <MixedArrayAccess>
+      <code><![CDATA[$config['messenger']]]></code>
+      <code><![CDATA[$config['messenger']]]></code>
+      <code><![CDATA[$config['messenger']]]></code>
+      <code><![CDATA[$config['messenger']['event_dispatcher']]]></code>
+      <code><![CDATA[$config['messenger']['failure_transport']]]></code>
+      <code><![CDATA[$config['messenger']['logger']]]></code>
+    </MixedArrayAccess>
+    <MixedAssignment>
+      <code><![CDATA[$config]]></code>
+      <code><![CDATA[$eventDispatcher]]></code>
+    </MixedAssignment>
+    <RiskyTruthyFalsyComparison>
+      <code><![CDATA[$logger]]></code>
+    </RiskyTruthyFalsyComparison>
+  </file>
+  <file src="src/Factory/Command/FailedMessagesShowCommandFactory.php">
+    <InternalMethod>
+      <code><![CDATA[new FailedMessagesShowCommand(
+            $failureTransportName,
+            new ServiceProvider([
+                $failureTransportName => static function () use ($receiverLocator, $failureTransportName) { return $receiverLocator->get($failureTransportName); },
+            ]),
+        )]]></code>
+    </InternalMethod>
+    <MissingClosureReturnType>
+      <code><![CDATA[static function () use ($receiverLocator, $failureTransportName) { return $receiverLocator->get($failureTransportName); }]]></code>
+    </MissingClosureReturnType>
+    <MixedArgument>
+      <code><![CDATA[$failureTransportName]]></code>
+      <code><![CDATA[$failureTransportName]]></code>
+    </MixedArgument>
+    <MixedArgumentTypeCoercion>
+      <code><![CDATA[[
+                $failureTransportName => static function () use ($receiverLocator, $failureTransportName) { return $receiverLocator->get($failureTransportName); },
+            ]]]></code>
+    </MixedArgumentTypeCoercion>
+    <MixedArrayAccess>
+      <code><![CDATA[$config['messenger']]]></code>
+      <code><![CDATA[$config['messenger']['failure_transport']]]></code>
+    </MixedArrayAccess>
+    <MixedArrayOffset>
+      <code><![CDATA[[
+                $failureTransportName => static function () use ($receiverLocator, $failureTransportName) { return $receiverLocator->get($failureTransportName); },
+            ]]]></code>
+    </MixedArrayOffset>
+    <MixedAssignment>
+      <code><![CDATA[$config]]></code>
+      <code><![CDATA[$failureTransportName]]></code>
+    </MixedAssignment>
+  </file>
+  <file src="src/Factory/Command/SetupTransportsCommandFactory.php">
+    <MixedArgument>
+      <code><![CDATA[$config['messenger']['transports'] ?? []]]></code>
+    </MixedArgument>
+    <MixedArrayAccess>
+      <code><![CDATA[$config['messenger']]]></code>
+      <code><![CDATA[$config['messenger']['transports']]]></code>
+    </MixedArrayAccess>
+    <MixedAssignment>
+      <code><![CDATA[$config]]></code>
+    </MixedAssignment>
+  </file>
+  <file src="src/Factory/EventDispatcherFactory.php">
+    <MixedArgument>
+      <code><![CDATA[$config['messenger']['subscribers'] ?? []]]></code>
+      <code><![CDATA[array_map([$container, 'get'], $subscribers)]]></code>
+    </MixedArgument>
+    <MixedAssignment>
+      <code><![CDATA[$cachePoolForRestartSignal]]></code>
+      <code><![CDATA[$failureTransport]]></code>
+    </MixedAssignment>
+    <RiskyTruthyFalsyComparison>
+      <code><![CDATA[$cachePoolForRestartSignal]]></code>
+    </RiskyTruthyFalsyComparison>
+  </file>
+  <file src="src/Factory/Listener/SendFailedMessageForRetryListenerFactory.php">
+    <MixedArgument>
+      <code><![CDATA[$container->get('messenger.retry_strategy_locator')]]></code>
+      <code><![CDATA[$logger ? $container->get($logger) : null]]></code>
+    </MixedArgument>
+    <RiskyTruthyFalsyComparison>
+      <code><![CDATA[$logger]]></code>
+    </RiskyTruthyFalsyComparison>
+  </file>
+  <file src="src/Factory/Listener/SendFailedMessageToFailureTransportListenerFactory.php">
+    <MixedArgument>
+      <code><![CDATA[$container->get($failureTransportName)]]></code>
+      <code><![CDATA[$logger ? $container->get($logger) : null]]></code>
+    </MixedArgument>
+    <RiskyTruthyFalsyComparison>
+      <code><![CDATA[$logger]]></code>
+    </RiskyTruthyFalsyComparison>
+  </file>
+  <file src="src/Factory/Listener/StopWorkerOnRestartSignalListenerFactory.php">
+    <MixedArgument>
+      <code><![CDATA[$cachePoolForRestartSignal]]></code>
+      <code><![CDATA[$container->get($cachePoolForRestartSignal)]]></code>
+      <code><![CDATA[$logger ? $container->get($logger) : null]]></code>
+    </MixedArgument>
+    <MixedAssignment>
+      <code><![CDATA[$cachePoolForRestartSignal]]></code>
+    </MixedAssignment>
+    <RiskyTruthyFalsyComparison>
+      <code><![CDATA[! $cachePoolForRestartSignal]]></code>
+      <code><![CDATA[$logger]]></code>
+    </RiskyTruthyFalsyComparison>
+  </file>
+  <file src="src/Factory/Middleware/AddBusNameStampMiddlewareFactory.php">
+    <UnusedParam>
+      <code><![CDATA[$container]]></code>
+    </UnusedParam>
+  </file>
+  <file src="src/Factory/Middleware/DoctrineCloseConnectionMiddlewareFactory.php">
+    <MixedArgument>
+      <code><![CDATA[$container->get(ManagerRegistry::class)]]></code>
+    </MixedArgument>
+  </file>
+  <file src="src/Factory/Middleware/DoctrineTransactionMiddlewareFactory.php">
+    <MixedArgument>
+      <code><![CDATA[$container->get(ManagerRegistry::class)]]></code>
+    </MixedArgument>
+  </file>
+  <file src="src/Factory/Middleware/HandleMessageMiddlewareFactory.php">
+    <MixedArgument>
+      <code><![CDATA[$container->get($logger)]]></code>
+    </MixedArgument>
+  </file>
+  <file src="src/Factory/Middleware/SendMessageMiddlewareFactory.php">
+    <MixedArgument>
+      <code><![CDATA[$container->get($logger)]]></code>
+      <code><![CDATA[$eventDispatcher ? $container->get($eventDispatcher) : null]]></code>
+    </MixedArgument>
+    <RiskyTruthyFalsyComparison>
+      <code><![CDATA[$eventDispatcher]]></code>
+    </RiskyTruthyFalsyComparison>
+  </file>
+  <file src="src/Factory/Retry/RetryStrategyFactory.php">
+    <MixedInferredReturnType>
+      <code><![CDATA[RetryStrategyInterface]]></code>
+    </MixedInferredReturnType>
+    <MixedReturnStatement>
+      <code><![CDATA[$container->get($retryConfig)]]></code>
+    </MixedReturnStatement>
+  </file>
+  <file src="src/Factory/Retry/RetryStrategyLocatorFactory.php">
+    <MixedArgument>
+      <code><![CDATA[$name]]></code>
+    </MixedArgument>
+    <MixedArgumentTypeCoercion>
+      <code><![CDATA[['factories' => $factories]]]></code>
+    </MixedArgumentTypeCoercion>
+    <MixedArrayAccess>
+      <code><![CDATA[$config['messenger']]]></code>
+      <code><![CDATA[$config['messenger']['transports']]]></code>
+    </MixedArrayAccess>
+    <MixedArrayOffset>
+      <code><![CDATA[$factories[$name]]]></code>
+    </MixedArrayOffset>
+    <MixedAssignment>
+      <code><![CDATA[$config]]></code>
+      <code><![CDATA[$name]]></code>
+      <code><![CDATA[$transports]]></code>
+    </MixedAssignment>
+  </file>
+  <file src="src/Factory/Transport/Receiver/ReceiversLocatorFactory.php">
+    <InvalidCast>
+      <code><![CDATA[$name]]></code>
+      <code><![CDATA[$name]]></code>
+    </InvalidCast>
+    <MixedArgument>
+      <code><![CDATA[$config['messenger']['transports'] ?? []]]></code>
+      <code><![CDATA[$name]]></code>
+      <code><![CDATA[$serviceName]]></code>
+    </MixedArgument>
+    <MixedArrayAccess>
+      <code><![CDATA[$config['messenger']]]></code>
+      <code><![CDATA[$config['messenger']]]></code>
+      <code><![CDATA[$config['messenger']['receivers']]]></code>
+      <code><![CDATA[$config['messenger']['transports']]]></code>
+    </MixedArrayAccess>
+    <MixedAssignment>
+      <code><![CDATA[$config]]></code>
+      <code><![CDATA[$name]]></code>
+      <code><![CDATA[$receivers]]></code>
+      <code><![CDATA[$serviceName]]></code>
+    </MixedAssignment>
+    <MixedInferredReturnType>
+      <code><![CDATA[ReceiverInterface]]></code>
+      <code><![CDATA[ReceiverInterface]]></code>
+    </MixedInferredReturnType>
+    <MixedReturnStatement>
+      <code><![CDATA[$container->get($serviceName)]]></code>
+      <code><![CDATA[$container->get((string) $name)]]></code>
+    </MixedReturnStatement>
+    <NoValue>
+      <code><![CDATA[$name]]></code>
+    </NoValue>
+    <UnusedForeachValue>
+      <code><![CDATA[$name]]></code>
+    </UnusedForeachValue>
+  </file>
+  <file src="src/Factory/Transport/Sender/SendersLocatorFactory.php">
+    <ArgumentTypeCoercion>
+      <code><![CDATA[$routing]]></code>
+    </ArgumentTypeCoercion>
+  </file>
+  <file src="src/Factory/Transport/Sync/SyncTransportFactoryFactory.php">
+    <MixedArgument>
+      <code><![CDATA[$container->get('messenger.routable_message_bus')]]></code>
+    </MixedArgument>
+  </file>
+  <file src="src/Factory/Transport/TransportFactory.php">
+    <MixedArgument>
+      <code><![CDATA[$serializerName]]></code>
+    </MixedArgument>
+    <MixedAssignment>
+      <code><![CDATA[$dsn]]></code>
+      <code><![CDATA[$options]]></code>
+      <code><![CDATA[$serializerName]]></code>
+      <code><![CDATA[$serializerName]]></code>
+      <code><![CDATA[$transportConfig]]></code>
+      <code><![CDATA[$transportFactory]]></code>
+    </MixedAssignment>
+    <MixedInferredReturnType>
+      <code><![CDATA[TransportInterface]]></code>
+    </MixedInferredReturnType>
+    <MixedMethodCall>
+      <code><![CDATA[createTransport]]></code>
+    </MixedMethodCall>
+    <MixedReturnStatement>
+      <code><![CDATA[$transportFactory->createTransport($dsn, $options, $serializer)]]></code>
+    </MixedReturnStatement>
+    <RiskyTruthyFalsyComparison>
+      <code><![CDATA[$serializerName]]></code>
+    </RiskyTruthyFalsyComparison>
+  </file>
+  <file src="src/Factory/Transport/TransportProviderFactory.php">
+    <InvalidArgument>
+      <code><![CDATA[new ServiceManager(['factories' => $factories])]]></code>
+    </InvalidArgument>
+    <RedundantCastGivenDocblockType>
+      <code><![CDATA[(string) $name]]></code>
+      <code><![CDATA[(string) $name]]></code>
+    </RedundantCastGivenDocblockType>
+    <TooManyArguments>
+      <code><![CDATA[new ServiceProvider(new ServiceManager(['factories' => $factories]), $factories)]]></code>
+    </TooManyArguments>
+  </file>
+  <file src="src/Handler/ContainerHandlersLocator.php">
+    <InvalidDocblock>
+      <code><![CDATA[private $handlers;]]></code>
+    </InvalidDocblock>
+    <MixedArgument>
+      <code><![CDATA[$this->container->get($handlerDescriptor)]]></code>
+    </MixedArgument>
+    <MixedAssignment>
+      <code><![CDATA[$expectedTransport]]></code>
+    </MixedAssignment>
+    <RedundantConditionGivenDocblockType>
+      <code><![CDATA[is_string($handlerDescriptor)]]></code>
+    </RedundantConditionGivenDocblockType>
+  </file>
+  <file src="src/Middleware/DoctrineCloseConnectionMiddleware.php">
+    <PossiblyUndefinedVariable>
+      <code><![CDATA[$connection]]></code>
+    </PossiblyUndefinedVariable>
+  </file>
+  <file src="src/ServiceProvider.php">
+    <MixedInferredReturnType>
+      <code><![CDATA[array]]></code>
+    </MixedInferredReturnType>
+    <MixedReturnStatement>
+      <code><![CDATA[$this->providedServices]]></code>
+    </MixedReturnStatement>
+    <UndefinedThisPropertyFetch>
+      <code><![CDATA[$this->providedServices]]></code>
+    </UndefinedThisPropertyFetch>
+  </file>
+  <file src="src/Subscriber/DoctrineClearEntityManagerWorkerSubscriber.php">
+    <ImplementedReturnTypeMismatch>
+      <code><![CDATA[iterable<string, string>]]></code>
+    </ImplementedReturnTypeMismatch>
+  </file>
+  <file src="src/Transport/Doctrine/DoctrineDBALTransportFactory.php">
+    <InternalClass>
+      <code><![CDATA[Connection::buildConfiguration($dsn, $options)]]></code>
+      <code><![CDATA[new Connection($configuration, $driverConnection)]]></code>
+    </InternalClass>
+    <InternalMethod>
+      <code><![CDATA[Connection::buildConfiguration($dsn, $options)]]></code>
+      <code><![CDATA[new Connection($configuration, $driverConnection)]]></code>
+    </InternalMethod>
+    <MixedArgument>
+      <code><![CDATA[$configuration['connection']]]></code>
+      <code><![CDATA[$driverConnection]]></code>
+    </MixedArgument>
+    <MixedAssignment>
+      <code><![CDATA[$driverConnection]]></code>
+    </MixedAssignment>
+    <MoreSpecificImplementedParamType>
+      <code><![CDATA[$options]]></code>
+      <code><![CDATA[$options]]></code>
+    </MoreSpecificImplementedParamType>
+  </file>
+</files>

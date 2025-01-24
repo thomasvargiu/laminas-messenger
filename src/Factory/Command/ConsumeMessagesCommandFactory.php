@@ -4,11 +4,15 @@ declare(strict_types=1);
 
 namespace TMV\Laminas\Messenger\Factory\Command;
 
-use function array_keys;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\Messenger\Command\ConsumeMessagesCommand;
 use Symfony\Component\Messenger\RoutableMessageBus;
 
+use function array_keys;
+
+/**
+ * @psalm-api
+ */
 final class ConsumeMessagesCommandFactory
 {
     public function __invoke(ContainerInterface $container): ConsumeMessagesCommand

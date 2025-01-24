@@ -4,11 +4,15 @@ declare(strict_types=1);
 
 namespace TMV\Laminas\Messenger\Factory\Retry;
 
-use function is_string;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\Messenger\Retry\MultiplierRetryStrategy;
 use Symfony\Component\Messenger\Retry\RetryStrategyInterface;
 
+use function is_string;
+
+/**
+ * @psalm-api
+ */
 final class RetryStrategyFactory
 {
     /** @var string */
@@ -33,7 +37,7 @@ final class RetryStrategyFactory
 
         return new MultiplierRetryStrategy(
             (int) ($retryConfig['max_retries'] ?? 3),
-            (int) ($retryConfig['delay'] ?? 1000),
+            (int) ($retryConfig['delay'] ?? 1_000),
             (float) ($retryConfig['multiplier'] ?? 2.),
             (int) ($retryConfig['max_delay'] ?? 0)
         );

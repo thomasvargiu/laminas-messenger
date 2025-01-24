@@ -11,6 +11,9 @@ use Symfony\Contracts\Service\ServiceProviderInterface;
 use TMV\Laminas\Messenger\Exception\InvalidArgumentException;
 use TMV\Laminas\Messenger\ServiceProvider;
 
+/**
+ * @psalm-api
+ */
 final class FailedMessagesRetryCommandFactory
 {
     public function __invoke(ContainerInterface $container): FailedMessagesRetryCommand

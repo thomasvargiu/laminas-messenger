@@ -13,6 +13,7 @@ use TMV\Laminas\Messenger\Factory\Command\SetupTransportsCommandFactory;
 class SetupTransportsCommandFactoryTest extends TestCase
 {
     use ProphecyTrait;
+
     public function testFactory(): void
     {
         $container = $this->prophesize(ContainerInterface::class);

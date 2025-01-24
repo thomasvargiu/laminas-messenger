@@ -4,13 +4,17 @@ declare(strict_types=1);
 
 namespace TMV\Laminas\Messenger\Factory\Middleware;
 
-use function array_key_exists;
 use Psr\Container\ContainerInterface;
-use function sprintf;
 use Symfony\Component\Messenger\Middleware\SendMessageMiddleware;
 use TMV\Laminas\Messenger\Exception\InvalidArgumentException;
 use TMV\Laminas\Messenger\Factory\Transport\Sender\SendersLocatorFactory;
 
+use function array_key_exists;
+use function sprintf;
+
+/**
+ * @psalm-api
+ */
 final class SendMessageMiddlewareFactory
 {
     /** @var string */
@@ -44,10 +48,9 @@ final class SendMessageMiddlewareFactory
     }
 
     /**
-     * @param string $name
-     * @param array<int, mixed> $arguments
+     * @psalm-api
      *
-     * @return SendMessageMiddleware
+     * @param array<int, mixed> $arguments
      */
     public static function __callStatic(string $name, array $arguments): SendMessageMiddleware
     {

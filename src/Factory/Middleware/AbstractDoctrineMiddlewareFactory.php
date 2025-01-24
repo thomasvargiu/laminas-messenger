@@ -4,11 +4,12 @@ declare(strict_types=1);
 
 namespace TMV\Laminas\Messenger\Factory\Middleware;
 
-use function array_key_exists;
 use Psr\Container\ContainerInterface;
-use function sprintf;
 use Symfony\Component\Messenger\Middleware\MiddlewareInterface;
 use TMV\Laminas\Messenger\Exception\InvalidArgumentException;
+
+use function array_key_exists;
+use function sprintf;
 
 abstract class AbstractDoctrineMiddlewareFactory
 {
@@ -22,10 +23,9 @@ abstract class AbstractDoctrineMiddlewareFactory
     abstract public function __invoke(ContainerInterface $container): MiddlewareInterface;
 
     /**
-     * @param string $name
-     * @param array<int, mixed> $arguments
+     * @psalm-api
      *
-     * @return MiddlewareInterface
+     * @param array<int, mixed> $arguments
      */
     public static function __callStatic(string $name, array $arguments): MiddlewareInterface
     {

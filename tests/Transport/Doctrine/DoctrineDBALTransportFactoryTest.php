@@ -17,6 +17,7 @@ use TMV\Laminas\Messenger\Transport\Doctrine\DoctrineDBALTransportFactory;
 class DoctrineDBALTransportFactoryTest extends TestCase
 {
     use ProphecyTrait;
+
     public function testCreateTransport(): void
     {
         $container = $this->prophesize(ContainerInterface::class);

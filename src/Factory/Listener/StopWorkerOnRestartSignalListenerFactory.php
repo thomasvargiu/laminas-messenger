@@ -8,6 +8,9 @@ use Psr\Container\ContainerInterface;
 use Symfony\Component\Messenger\EventListener\StopWorkerOnRestartSignalListener;
 use TMV\Laminas\Messenger\Exception\InvalidArgumentException;
 
+/**
+ * @psalm-api
+ */
 final class StopWorkerOnRestartSignalListenerFactory
 {
     public function __invoke(ContainerInterface $container): StopWorkerOnRestartSignalListener

@@ -14,6 +14,7 @@ use TMV\Laminas\Messenger\Factory\Retry\RetryStrategyLocatorFactory;
 class RetryStrategyLocatorFactoryTest extends TestCase
 {
     use ProphecyTrait;
+
     public function testFactory(): void
     {
         $container = $this->prophesize(ContainerInterface::class);

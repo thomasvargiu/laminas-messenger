@@ -7,6 +7,9 @@
         "sort-packages": true,
         "allow-plugins": {
             "facile-it/facile-coding-standard": true
+        },
+        "platform": {
+            "php": "8.0"
         }
     },
     "minimum-stability": "stable",
@@ -49,7 +52,7 @@
         }
     },
     "require": {
-        "php": "^8.1",
+        "php": "^8.0",
         "psr/container": "^1.0 || ^2.0",
         "symfony/event-dispatcher": "^4.0 || ^5.0 || ^6.0 || ^7.0",
         "symfony/messenger": "^5.4.45",
@@ -63,7 +66,7 @@
         "friendsofphp/php-cs-fixer": "^3.68.1",
         "laminas/laminas-config-aggregator": "^1.1",
         "phpspec/prophecy-phpunit": "^2.3.0",
-        "phpunit/phpunit": "^10.5.41",
+        "phpunit/phpunit": "^9.6.22 || ^10.5.41",
         "psalm/plugin-phpunit": "^0.19.0",
         "psr/cache": "^1.0.1 || ^2.0 || ^3.0",
         "psr/log": "^1.1.4 || ^2.0 || ^3.0",

@@ -19,6 +19,7 @@ use TMV\Laminas\Messenger\Factory\Command\FailedMessagesRetryCommandFactory;
 class FailedMessagesRetryCommandFactoryTest extends TestCase
 {
     use ProphecyTrait;
+
     public function testFactory(): void
     {
         $container = $this->prophesize(ContainerInterface::class);

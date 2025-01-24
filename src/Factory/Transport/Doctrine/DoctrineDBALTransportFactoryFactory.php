@@ -7,6 +7,9 @@ namespace TMV\Laminas\Messenger\Factory\Transport\Doctrine;
 use Psr\Container\ContainerInterface;
 use TMV\Laminas\Messenger\Transport\Doctrine\DoctrineDBALTransportFactory;
 
+/**
+ * @psalm-api
+ */
 final class DoctrineDBALTransportFactoryFactory
 {
     public function __invoke(ContainerInterface $container): DoctrineDBALTransportFactory

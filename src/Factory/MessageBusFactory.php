@@ -4,11 +4,7 @@ declare(strict_types=1);
 
 namespace TMV\Laminas\Messenger\Factory;
 
-use function array_key_exists;
-use function array_map;
-use function array_merge;
 use Psr\Container\ContainerInterface;
-use function sprintf;
 use Symfony\Component\Messenger\MessageBus;
 use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Messenger\Middleware\AddBusNameStampMiddleware;
@@ -20,6 +16,14 @@ use TMV\Laminas\Messenger\Exception\InvalidArgumentException;
 use TMV\Laminas\Messenger\Factory\Middleware\HandleMessageMiddlewareFactory;
 use TMV\Laminas\Messenger\Factory\Middleware\SendMessageMiddlewareFactory;
 
+use function array_key_exists;
+use function array_map;
+use function array_merge;
+use function sprintf;
+
+/**
+ * @psalm-api
+ */
 final class MessageBusFactory
 {
     /** @var string */
@@ -63,10 +67,9 @@ final class MessageBusFactory
     }
 
     /**
-     * @param string $name
-     * @param array<int, mixed> $arguments
+     * @psalm-api
      *
-     * @return MessageBusInterface
+     * @param array<int, mixed> $arguments
      */
     public static function __callStatic(string $name, array $arguments): MessageBusInterface
     {

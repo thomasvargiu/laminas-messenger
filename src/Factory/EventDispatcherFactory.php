@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace TMV\Laminas\Messenger\Factory;
 
-use function array_map;
-use function array_merge;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
@@ -16,6 +14,12 @@ use Symfony\Component\Messenger\EventListener\SendFailedMessageToFailureTranspor
 use Symfony\Component\Messenger\EventListener\StopWorkerOnRestartSignalListener;
 use Symfony\Component\Messenger\EventListener\StopWorkerOnSigtermSignalListener;
 
+use function array_map;
+use function array_merge;
+
+/**
+ * @psalm-api
+ */
 final class EventDispatcherFactory
 {
     public function __invoke(ContainerInterface $container): EventDispatcherInterface

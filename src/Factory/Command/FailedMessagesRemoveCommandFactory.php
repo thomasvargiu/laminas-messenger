@@ -4,13 +4,15 @@ declare(strict_types=1);
 
 namespace TMV\Laminas\Messenger\Factory\Command;
 
-use Laminas\ServiceManager\ServiceManager;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\Messenger\Command\FailedMessagesRemoveCommand;
 use Symfony\Contracts\Service\ServiceProviderInterface;
 use TMV\Laminas\Messenger\Exception\InvalidArgumentException;
 use TMV\Laminas\Messenger\ServiceProvider;
 
+/**
+ * @psalm-api
+ */
 final class FailedMessagesRemoveCommandFactory
 {
     public function __invoke(ContainerInterface $container): FailedMessagesRemoveCommand

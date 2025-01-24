@@ -1,14 +1,13 @@
 <?php
+
 declare(strict_types=1);
 
 namespace TMV\Laminas\Messenger\Factory\Transport;
 
 use Laminas\ServiceManager\ServiceManager;
 use Psr\Container\ContainerInterface;
-use Symfony\Component\Messenger\Transport\Receiver\ReceiverInterface;
 use Symfony\Component\Messenger\Transport\TransportInterface;
 use Symfony\Contracts\Service\ServiceProviderInterface;
-use TMV\Laminas\Messenger\Exception\InvalidArgumentException;
 use TMV\Laminas\Messenger\ServiceProvider;
 
 class TransportProviderFactory

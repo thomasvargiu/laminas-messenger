@@ -4,17 +4,21 @@ declare(strict_types=1);
 
 namespace TMV\Laminas\Messenger\Factory\Transport;
 
-use function array_key_exists;
-use function is_array;
-use function is_string;
 use Psr\Container\ContainerInterface;
-use function sprintf;
 use Symfony\Component\Messenger\Transport\Serialization\PhpSerializer;
 use Symfony\Component\Messenger\Transport\Serialization\SerializerInterface;
 use Symfony\Component\Messenger\Transport\TransportFactory as SFTransportFactory;
 use Symfony\Component\Messenger\Transport\TransportInterface;
 use TMV\Laminas\Messenger\Exception\InvalidArgumentException;
 
+use function array_key_exists;
+use function is_array;
+use function is_string;
+use function sprintf;
+
+/**
+ * @psalm-api
+ */
 final class TransportFactory
 {
     /** @var string */
@@ -58,10 +62,9 @@ final class TransportFactory
     }
 
     /**
-     * @param string $name
-     * @param array<int, mixed> $arguments
+     * @psalm-api
      *
-     * @return TransportInterface
+     * @param array<int, mixed> $arguments
      */
     public static function __callStatic(string $name, array $arguments): TransportInterface
     {

@@ -14,6 +14,7 @@ use TMV\Laminas\Messenger\Factory\Retry\RetryStrategyFactory;
 class RetryStrategyFactoryTest extends TestCase
 {
     use ProphecyTrait;
+
     public function testFactory(): void
     {
         $container = $this->prophesize(ContainerInterface::class);
@@ -24,7 +25,7 @@ class RetryStrategyFactoryTest extends TestCase
                     'foo' => [
                         'retry_strategy' => [
                             'max_retries' => 99,
-                            'delay' => 5000,
+                            'delay' => 5_000,
                             'multiplier' => 3.5,
                             'max_delay' => 5,
                         ],

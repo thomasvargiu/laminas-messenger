@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace TMV\Laminas\Messenger;
@@ -11,7 +12,6 @@ use Symfony\Contracts\Service\ServiceProviderInterface;
  */
 class ServiceProvider implements ServiceProviderInterface
 {
-
     /**
      * @var array<string, callable>
      */
@@ -20,15 +20,17 @@ class ServiceProvider implements ServiceProviderInterface
     /**
      * @param array<string, callable> $factories
      */
-    public function __construct(array $factories) {
+    public function __construct(array $factories)
+    {
         $this->factories = $factories;
     }
 
     public function get(string $id): mixed
     {
         if (! array_key_exists($id, $this->factories)) {
-            throw new ServiceNotFoundException(sprintf("Service %s not found", $id));
+            throw new ServiceNotFoundException(sprintf('Service %s not found', $id));
         }
+
         return $this->factories[$id]();
     }
 

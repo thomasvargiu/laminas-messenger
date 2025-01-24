@@ -6,12 +6,16 @@ namespace TMV\Laminas\Messenger\Factory\Transport\Receiver;
 
 use Symfony\Contracts\Service\ServiceProviderInterface;
 use TMV\Laminas\Messenger\ServiceProvider;
-use function array_key_exists;
-use function array_keys;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\Messenger\Transport\Receiver\ReceiverInterface;
 use TMV\Laminas\Messenger\Exception\InvalidArgumentException;
 
+use function array_key_exists;
+use function array_keys;
+
+/**
+ * @psalm-api
+ */
 final class ReceiversLocatorFactory
 {
     public function __invoke(ContainerInterface $container): ServiceProviderInterface

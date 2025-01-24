@@ -8,6 +8,9 @@ use Psr\Container\ContainerInterface;
 use Symfony\Component\Messenger\Handler\HandlersLocatorInterface;
 use TMV\Laminas\Messenger\Handler\ContainerHandlersLocator;
 
+/**
+ * @psalm-api
+ */
 final class HandlersLocatorFactory
 {
     /** @var string */

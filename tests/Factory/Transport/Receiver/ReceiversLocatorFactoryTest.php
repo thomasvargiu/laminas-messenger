@@ -16,6 +16,7 @@ use TMV\Laminas\Messenger\Factory\Transport\Receiver\ReceiversLocatorFactory;
 class ReceiversLocatorFactoryTest extends TestCase
 {
     use ProphecyTrait;
+
     public function testFactory(): void
     {
         $container = $this->prophesize(ContainerInterface::class);

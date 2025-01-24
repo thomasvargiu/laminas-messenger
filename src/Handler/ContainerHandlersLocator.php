@@ -4,18 +4,19 @@ declare(strict_types=1);
 
 namespace TMV\Laminas\Messenger\Handler;
 
-use function class_implements;
-use function class_parents;
-use function get_class;
-use function in_array;
-use function is_callable;
-use function is_string;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\Messenger\Envelope;
 use Symfony\Component\Messenger\Handler\HandlerDescriptor;
 use Symfony\Component\Messenger\Handler\HandlersLocatorInterface;
 use Symfony\Component\Messenger\Stamp\ReceivedStamp;
 use TMV\Laminas\Messenger\Exception\InvalidArgumentException;
+
+use function class_implements;
+use function class_parents;
+use function get_class;
+use function in_array;
+use function is_callable;
+use function is_string;
 
 final class ContainerHandlersLocator implements HandlersLocatorInterface
 {
@@ -26,7 +27,6 @@ final class ContainerHandlersLocator implements HandlersLocatorInterface
     private $handlers;
 
     /**
-     * @param ContainerInterface $container
      * @param string[][]|array<string, array<string|callable>> $handlers
      */
     public function __construct(ContainerInterface $container, array $handlers)
@@ -65,8 +65,6 @@ final class ContainerHandlersLocator implements HandlersLocatorInterface
     }
 
     /**
-     * @param Envelope $envelope
-     *
      * @return array<string, string>
      */
     private static function listTypes(Envelope $envelope): array

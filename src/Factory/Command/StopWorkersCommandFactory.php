@@ -9,13 +9,15 @@ use Psr\Container\ContainerInterface;
 use Symfony\Component\Messenger\Command\StopWorkersCommand;
 use TMV\Laminas\Messenger\Exception\InvalidArgumentException;
 
+/**
+ * @psalm-api
+ */
 final class StopWorkersCommandFactory
 {
     public function __invoke(ContainerInterface $container): StopWorkersCommand
     {
         /** @var array{messenger: array{cache_pool_for_restart_signal?: string}} $config */
         $config = $container->has('config') ? $container->get('config') : [];
-        /** @var string|null $cachePoolForRestartSignalName */
         $cachePoolForRestartSignalName = $config['messenger']['cache_pool_for_restart_signal'] ?? null;
 
         if (null === $cachePoolForRestartSignalName) {

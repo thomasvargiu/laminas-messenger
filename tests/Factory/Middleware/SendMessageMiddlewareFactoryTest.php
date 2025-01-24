@@ -16,6 +16,7 @@ use TMV\Laminas\Messenger\Factory\Middleware\SendMessageMiddlewareFactory;
 class SendMessageMiddlewareFactoryTest extends TestCase
 {
     use ProphecyTrait;
+
     public function testFactory(): void
     {
         $factory = [SendMessageMiddlewareFactory::class, 'bus_name'];

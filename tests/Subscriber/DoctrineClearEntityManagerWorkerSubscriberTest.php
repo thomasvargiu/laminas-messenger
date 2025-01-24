@@ -15,6 +15,7 @@ use TMV\Laminas\Messenger\Subscriber\DoctrineClearEntityManagerWorkerSubscriber;
 class DoctrineClearEntityManagerWorkerSubscriberTest extends TestCase
 {
     use ProphecyTrait;
+
     public function testSubscribedEvents(): void
     {
         $managerRegistry = $this->prophesize(ManagerRegistry::class);

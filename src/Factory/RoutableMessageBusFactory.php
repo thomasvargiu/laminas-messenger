@@ -4,13 +4,17 @@ declare(strict_types=1);
 
 namespace TMV\Laminas\Messenger\Factory;
 
-use function array_key_exists;
 use Psr\Container\ContainerInterface;
-use function sprintf;
 use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Messenger\RoutableMessageBus;
 use TMV\Laminas\Messenger\Exception\InvalidArgumentException;
 
+use function array_key_exists;
+use function sprintf;
+
+/**
+ * @psalm-api
+ */
 final class RoutableMessageBusFactory
 {
     /** @var string */
@@ -30,10 +34,9 @@ final class RoutableMessageBusFactory
     }
 
     /**
-     * @param string $name
-     * @param array<int, mixed> $arguments
+     * @psalm-api
      *
-     * @return MessageBusInterface
+     * @param array<int, mixed> $arguments
      */
     public static function __callStatic(string $name, array $arguments): MessageBusInterface
     {

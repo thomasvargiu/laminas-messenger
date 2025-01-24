@@ -16,6 +16,7 @@ use TMV\Laminas\Messenger\Factory\Transport\TransportFactory;
 class TransportFactoryTest extends TestCase
 {
     use ProphecyTrait;
+
     public function testStaticFactory(): void
     {
         $factory = [TransportFactory::class, 'foo'];

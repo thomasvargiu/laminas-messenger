@@ -7,6 +7,9 @@ namespace TMV\Laminas\Messenger\Factory\Listener;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\Messenger\EventListener\SendFailedMessageForRetryListener;
 
+/**
+ * @psalm-api
+ */
 final class SendFailedMessageForRetryListenerFactory
 {
     public function __invoke(ContainerInterface $container): SendFailedMessageForRetryListener

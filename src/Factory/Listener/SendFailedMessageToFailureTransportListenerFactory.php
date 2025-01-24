@@ -8,6 +8,9 @@ use Psr\Container\ContainerInterface;
 use Symfony\Component\Messenger\EventListener\SendFailedMessageToFailureTransportListener;
 use TMV\Laminas\Messenger\Exception\InvalidArgumentException;
 
+/**
+ * @psalm-api
+ */
 final class SendFailedMessageToFailureTransportListenerFactory
 {
     public function __invoke(ContainerInterface $container): SendFailedMessageToFailureTransportListener

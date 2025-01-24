@@ -16,6 +16,7 @@ use TMV\Laminas\Messenger\Factory\MessageBusFactory;
 class MessageBusFactoryTest extends TestCase
 {
     use ProphecyTrait;
+
     public function testFactory(): void
     {
         $container = $this->prophesize(ContainerInterface::class);

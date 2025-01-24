@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace TMV\Laminas\Messenger\Test\Factory\Command;
 
 use PHPUnit\Framework\TestCase;
+use Prophecy\PhpUnit\ProphecyTrait;
 use Psr\Cache\CacheItemPoolInterface;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\Messenger\Command\StopWorkersCommand;
@@ -13,6 +14,7 @@ use TMV\Laminas\Messenger\Factory\Command\StopWorkersCommandFactory;
 
 class StopWorkersCommandFactoryTest extends TestCase
 {
+    use ProphecyTrait;
     public function testFactory(): void
     {
         $container = $this->prophesize(ContainerInterface::class);

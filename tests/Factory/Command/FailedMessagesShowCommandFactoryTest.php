@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace TMV\Laminas\Messenger\Test\Factory\Command;
 
 use PHPUnit\Framework\TestCase;
+use Prophecy\PhpUnit\ProphecyTrait;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\Messenger\Command\FailedMessagesShowCommand;
 use Symfony\Component\Messenger\Transport\TransportInterface;
@@ -13,6 +14,7 @@ use TMV\Laminas\Messenger\Factory\Command\FailedMessagesShowCommandFactory;
 
 class FailedMessagesShowCommandFactoryTest extends TestCase
 {
+    use ProphecyTrait;
     public function testFactory(): void
     {
         $container = $this->prophesize(ContainerInterface::class);
@@ -30,10 +32,6 @@ class FailedMessagesShowCommandFactoryTest extends TestCase
         $container->get('messenger.receivers_locator')
             ->shouldBeCalled()
             ->willReturn($receiversLocator->reveal());
-
-        $receiversLocator->get('failed')
-            ->shouldBeCalled()
-            ->willReturn($failedTransport->reveal());
 
         $factory = new FailedMessagesShowCommandFactory();
 

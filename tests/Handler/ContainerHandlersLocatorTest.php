@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace TMV\Laminas\Messenger\Test\Handler;
 
 use PHPUnit\Framework\TestCase;
+use Prophecy\PhpUnit\ProphecyTrait;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\Messenger\Envelope;
 use Symfony\Component\Messenger\Handler\HandlerDescriptor;
@@ -12,8 +13,9 @@ use Symfony\Component\Messenger\Stamp\ReceivedStamp;
 use TMV\Laminas\Messenger\Handler\ContainerHandlersLocator;
 use TMV\Laminas\Messenger\Test\Factory\MessageMock;
 
-class HandlersLocatorTest extends TestCase
+class ContainerHandlersLocatorTest extends TestCase
 {
+    use ProphecyTrait;
     public function testItYieldsHandlerDescriptors(): void
     {
         $container = $this->prophesize(ContainerInterface::class);

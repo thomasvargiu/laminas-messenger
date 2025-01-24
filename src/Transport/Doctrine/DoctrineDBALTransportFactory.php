@@ -9,16 +9,15 @@ use Psr\Container\ContainerInterface;
 use function sprintf;
 use function strpos;
 use Symfony\Component\Messenger\Exception\TransportException;
-use Symfony\Component\Messenger\Transport\Doctrine\Connection;
-use Symfony\Component\Messenger\Transport\Doctrine\DoctrineTransport;
+use Symfony\Component\Messenger\Bridge\Doctrine\Transport\Connection;
+use Symfony\Component\Messenger\Bridge\Doctrine\Transport\DoctrineTransport;
 use Symfony\Component\Messenger\Transport\Serialization\SerializerInterface;
 use Symfony\Component\Messenger\Transport\TransportFactoryInterface;
 use Symfony\Component\Messenger\Transport\TransportInterface;
 
 class DoctrineDBALTransportFactory implements TransportFactoryInterface
 {
-    /** @var ContainerInterface */
-    private $container;
+    private ContainerInterface $container;
 
     public function __construct(ContainerInterface $registry)
     {

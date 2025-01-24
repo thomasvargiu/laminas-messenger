@@ -5,12 +5,14 @@ declare(strict_types=1);
 namespace TMV\Laminas\Messenger\Test\Factory\Transport;
 
 use PHPUnit\Framework\TestCase;
+use Prophecy\PhpUnit\ProphecyTrait;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\Messenger\Transport\TransportFactoryInterface;
 use TMV\Laminas\Messenger\Factory\Transport\TransportFactoryFactory;
 
 class TransportFactoryFactoryTest extends TestCase
 {
+    use ProphecyTrait;
     public function testFactory(): void
     {
         $container = $this->prophesize(ContainerInterface::class);

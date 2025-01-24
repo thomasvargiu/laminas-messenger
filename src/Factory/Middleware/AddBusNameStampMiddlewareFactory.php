@@ -12,8 +12,7 @@ use TMV\Laminas\Messenger\Exception\InvalidArgumentException;
 
 final class AddBusNameStampMiddlewareFactory
 {
-    /** @var string */
-    private $busName;
+    private string $busName;
 
     public function __construct(string $busName = 'messenger.bus.default')
     {

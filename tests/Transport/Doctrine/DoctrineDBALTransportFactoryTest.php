@@ -7,14 +7,16 @@ namespace TMV\Laminas\Messenger\Test\Transport\Doctrine;
 use Doctrine\DBAL\Connection;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
+use Prophecy\PhpUnit\ProphecyTrait;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\Messenger\Exception\TransportException;
-use Symfony\Component\Messenger\Transport\Doctrine\DoctrineTransport;
+use Symfony\Component\Messenger\Bridge\Doctrine\Transport\DoctrineTransport;
 use Symfony\Component\Messenger\Transport\Serialization\SerializerInterface;
 use TMV\Laminas\Messenger\Transport\Doctrine\DoctrineDBALTransportFactory;
 
 class DoctrineDBALTransportFactoryTest extends TestCase
 {
+    use ProphecyTrait;
     public function testCreateTransport(): void
     {
         $container = $this->prophesize(ContainerInterface::class);

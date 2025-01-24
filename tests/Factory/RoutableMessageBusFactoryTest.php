@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace TMV\Laminas\Messenger\Test\Factory;
 
 use PHPUnit\Framework\TestCase;
+use Prophecy\PhpUnit\ProphecyTrait;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Messenger\RoutableMessageBus;
@@ -13,6 +14,7 @@ use TMV\Laminas\Messenger\Factory\RoutableMessageBusFactory;
 
 class RoutableMessageBusFactoryTest extends TestCase
 {
+    use ProphecyTrait;
     public function testFactory(): void
     {
         $container = $this->prophesize(ContainerInterface::class);

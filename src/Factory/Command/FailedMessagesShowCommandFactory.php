@@ -6,7 +6,9 @@ namespace TMV\Laminas\Messenger\Factory\Command;
 
 use Psr\Container\ContainerInterface;
 use Symfony\Component\Messenger\Command\FailedMessagesShowCommand;
+use Symfony\Contracts\Service\ServiceProviderInterface;
 use TMV\Laminas\Messenger\Exception\InvalidArgumentException;
+use TMV\Laminas\Messenger\ServiceProvider;
 
 final class FailedMessagesShowCommandFactory
 {
@@ -19,12 +21,14 @@ final class FailedMessagesShowCommandFactory
             throw new InvalidArgumentException('Invalid failure_transport name');
         }
 
-        /** @var ContainerInterface $receiverLocator */
+        /** @var ServiceProviderInterface $receiverLocator */
         $receiverLocator = $container->get('messenger.receivers_locator');
 
         return new FailedMessagesShowCommand(
             $failureTransportName,
-            $receiverLocator->get($failureTransportName)
+            new ServiceProvider([
+                $failureTransportName => static function () use ($receiverLocator, $failureTransportName) { return $receiverLocator->get($failureTransportName); },
+            ]),
         );
     }
 }

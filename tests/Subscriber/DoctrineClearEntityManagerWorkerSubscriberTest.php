@@ -4,15 +4,17 @@ declare(strict_types=1);
 
 namespace TMV\Laminas\Messenger\Test\Subscriber;
 
-use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\ORM\EntityManagerInterface;
 use PHPUnit\Framework\TestCase;
+use Prophecy\PhpUnit\ProphecyTrait;
 use Symfony\Component\Messenger\Event\WorkerMessageFailedEvent;
 use Symfony\Component\Messenger\Event\WorkerMessageHandledEvent;
 use TMV\Laminas\Messenger\Subscriber\DoctrineClearEntityManagerWorkerSubscriber;
 
 class DoctrineClearEntityManagerWorkerSubscriberTest extends TestCase
 {
+    use ProphecyTrait;
     public function testSubscribedEvents(): void
     {
         $managerRegistry = $this->prophesize(ManagerRegistry::class);

@@ -12,8 +12,7 @@ use TMV\Laminas\Messenger\Exception\InvalidArgumentException;
 
 abstract class AbstractDoctrineMiddlewareFactory
 {
-    /** @var string */
-    protected $connectionName;
+    protected string $connectionName;
 
     final public function __construct(string $connectionName = 'orm_default')
     {

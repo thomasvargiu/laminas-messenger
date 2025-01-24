@@ -5,17 +5,20 @@ declare(strict_types=1);
 namespace TMV\Laminas\Messenger\Test\Factory\Command;
 
 use PHPUnit\Framework\TestCase;
+use Prophecy\PhpUnit\ProphecyTrait;
 use Psr\Container\ContainerInterface;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Messenger\Command\FailedMessagesRetryCommand;
 use Symfony\Component\Messenger\RoutableMessageBus;
 use Symfony\Component\Messenger\Transport\TransportInterface;
+use Symfony\Contracts\Service\ServiceProviderInterface;
 use TMV\Laminas\Messenger\Exception\InvalidArgumentException;
 use TMV\Laminas\Messenger\Factory\Command\FailedMessagesRetryCommandFactory;
 
 class FailedMessagesRetryCommandFactoryTest extends TestCase
 {
+    use ProphecyTrait;
     public function testFactory(): void
     {
         $container = $this->prophesize(ContainerInterface::class);
@@ -30,7 +33,7 @@ class FailedMessagesRetryCommandFactoryTest extends TestCase
             ],
         ]);
 
-        $receiversLocator = $this->prophesize(ContainerInterface::class);
+        $receiversLocator = $this->prophesize(ServiceProviderInterface::class);
         $failedTransport = $this->prophesize(TransportInterface::class);
         $routableMessageBus = $this->prophesize(RoutableMessageBus::class);
         $logger = $this->prophesize(LoggerInterface::class);
@@ -51,10 +54,6 @@ class FailedMessagesRetryCommandFactoryTest extends TestCase
         $container->get('my.event_dispatcher')
             ->shouldBeCalled()
             ->willReturn($eventDispatcher->reveal());
-
-        $receiversLocator->get('failed')
-            ->shouldBeCalled()
-            ->willReturn($failedTransport->reveal());
 
         $factory = new FailedMessagesRetryCommandFactory();
 
@@ -77,7 +76,7 @@ class FailedMessagesRetryCommandFactoryTest extends TestCase
             ],
         ]);
 
-        $receiversLocator = $this->prophesize(ContainerInterface::class);
+        $receiversLocator = $this->prophesize(ServiceProviderInterface::class);
         $failedTransport = $this->prophesize(TransportInterface::class);
         $routableMessageBus = $this->prophesize(RoutableMessageBus::class);
         $eventDispatcher = $this->prophesize(EventDispatcherInterface::class);
@@ -96,10 +95,6 @@ class FailedMessagesRetryCommandFactoryTest extends TestCase
         $container->get('messenger.event_dispatcher')
             ->shouldBeCalled()
             ->willReturn($eventDispatcher->reveal());
-
-        $receiversLocator->get('failed')
-            ->shouldBeCalled()
-            ->willReturn($failedTransport->reveal());
 
         $factory = new FailedMessagesRetryCommandFactory();
 

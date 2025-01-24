@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace TMV\Laminas\Messenger\Middleware;
 
-use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\ORM\EntityManagerInterface;
 use InvalidArgumentException;
 use Symfony\Component\Messenger\Envelope;
@@ -15,7 +15,7 @@ use Symfony\Component\Messenger\Middleware\StackInterface;
 abstract class AbstractDoctrineMiddleware implements MiddlewareInterface
 {
     /** @var ManagerRegistry */
-    protected $managerRegistry;
+    protected ManagerRegistry $managerRegistry;
 
     /** @var string|null */
     protected $entityManagerName;

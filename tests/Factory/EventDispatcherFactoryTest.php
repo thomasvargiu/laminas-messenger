@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace TMV\Laminas\Messenger\Test\Factory;
 
 use PHPUnit\Framework\TestCase;
+use Prophecy\PhpUnit\ProphecyTrait;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Messenger\EventListener\DispatchPcntlSignalListener;
@@ -16,6 +17,7 @@ use TMV\Laminas\Messenger\Factory\EventDispatcherFactory;
 
 class EventDispatcherFactoryTest extends TestCase
 {
+    use ProphecyTrait;
     private function getListeners(): array
     {
         return [

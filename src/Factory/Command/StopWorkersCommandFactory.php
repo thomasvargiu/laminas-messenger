@@ -13,16 +13,17 @@ final class StopWorkersCommandFactory
 {
     public function __invoke(ContainerInterface $container): StopWorkersCommand
     {
+        /** @var array{messenger: array{cache_pool_for_restart_signal?: string}} $config */
         $config = $container->has('config') ? $container->get('config') : [];
-        /** @var string|null $cachePoolForRestartSignal */
-        $cachePoolForRestartSignal = $config['messenger']['cache_pool_for_restart_signal'] ?? null;
+        /** @var string|null $cachePoolForRestartSignalName */
+        $cachePoolForRestartSignalName = $config['messenger']['cache_pool_for_restart_signal'] ?? null;
 
-        if (null === $cachePoolForRestartSignal) {
+        if (null === $cachePoolForRestartSignalName) {
             throw new InvalidArgumentException('Invalid cache_pool_for_restart_signal name');
         }
 
         /** @var CacheItemPoolInterface $cachePoolForRestartSignal */
-        $cachePoolForRestartSignal = $container->get($cachePoolForRestartSignal);
+        $cachePoolForRestartSignal = $container->get($cachePoolForRestartSignalName);
 
         return new StopWorkersCommand($cachePoolForRestartSignal);
     }

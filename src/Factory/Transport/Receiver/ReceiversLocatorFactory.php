@@ -4,16 +4,17 @@ declare(strict_types=1);
 
 namespace TMV\Laminas\Messenger\Factory\Transport\Receiver;
 
+use Symfony\Contracts\Service\ServiceProviderInterface;
+use TMV\Laminas\Messenger\ServiceProvider;
 use function array_key_exists;
 use function array_keys;
-use Laminas\ServiceManager\ServiceManager;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\Messenger\Transport\Receiver\ReceiverInterface;
 use TMV\Laminas\Messenger\Exception\InvalidArgumentException;
 
 final class ReceiversLocatorFactory
 {
-    public function __invoke(ContainerInterface $container): ContainerInterface
+    public function __invoke(ContainerInterface $container): ServiceProviderInterface
     {
         $factories = [];
 
@@ -37,6 +38,6 @@ final class ReceiversLocatorFactory
             };
         }
 
-        return new ServiceManager(['factories' => $factories]);
+        return new ServiceProvider($factories);
     }
 }

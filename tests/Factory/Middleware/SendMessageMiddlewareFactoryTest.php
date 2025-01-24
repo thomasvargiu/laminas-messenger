@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace TMV\Laminas\Messenger\Test\Factory\Middleware;
 
 use PHPUnit\Framework\TestCase;
+use Prophecy\PhpUnit\ProphecyTrait;
 use Psr\Container\ContainerInterface;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
@@ -14,6 +15,7 @@ use TMV\Laminas\Messenger\Factory\Middleware\SendMessageMiddlewareFactory;
 
 class SendMessageMiddlewareFactoryTest extends TestCase
 {
+    use ProphecyTrait;
     public function testFactory(): void
     {
         $factory = [SendMessageMiddlewareFactory::class, 'bus_name'];
@@ -51,6 +53,8 @@ class SendMessageMiddlewareFactoryTest extends TestCase
         $factory = [SendMessageMiddlewareFactory::class, 'bus_name'];
 
         $container = $this->prophesize(ContainerInterface::class);
+        $container->has('config')->willReturn(true);
+        $container->get('config')->willReturn([]);
 
         $service = $factory($container->reveal());
 

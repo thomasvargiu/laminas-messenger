@@ -46,6 +46,7 @@ class ConfigProvider
                 'messenger.routable_message_bus' => [Factory\RoutableMessageBusFactory::class, 'messenger.bus.default'],
                 'messenger.retry_strategy_locator' => Factory\Retry\RetryStrategyLocatorFactory::class,
                 'messenger.receivers_locator' => Factory\Transport\Receiver\ReceiversLocatorFactory::class,
+                'messenger.transports_locator' => Factory\Transport\TransportProviderFactory::class,
             ],
         ];
     }

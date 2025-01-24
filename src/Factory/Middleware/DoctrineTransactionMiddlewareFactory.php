@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace TMV\Laminas\Messenger\Factory\Middleware;
 
-use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\Persistence\ManagerRegistry;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\Messenger\Middleware\MiddlewareInterface;
 use TMV\Laminas\Messenger\Middleware\DoctrineTransactionMiddleware;

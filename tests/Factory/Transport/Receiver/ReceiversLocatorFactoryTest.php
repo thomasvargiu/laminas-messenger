@@ -4,16 +4,18 @@ declare(strict_types=1);
 
 namespace TMV\Laminas\Messenger\Test\Factory\Transport\Receiver;
 
-use Laminas\ServiceManager\ServiceManager;
 use PHPUnit\Framework\TestCase;
+use Prophecy\PhpUnit\ProphecyTrait;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\Messenger\Transport\Receiver\ReceiverInterface;
 use Symfony\Component\Messenger\Transport\TransportInterface;
+use Symfony\Contracts\Service\ServiceProviderInterface;
 use TMV\Laminas\Messenger\Exception\InvalidArgumentException;
 use TMV\Laminas\Messenger\Factory\Transport\Receiver\ReceiversLocatorFactory;
 
 class ReceiversLocatorFactoryTest extends TestCase
 {
+    use ProphecyTrait;
     public function testFactory(): void
     {
         $container = $this->prophesize(ContainerInterface::class);
@@ -43,7 +45,7 @@ class ReceiversLocatorFactoryTest extends TestCase
         $factory = new ReceiversLocatorFactory();
         $service = $factory($container->reveal());
 
-        $this->assertInstanceOf(ServiceManager::class, $service);
+        $this->assertInstanceOf(ServiceProviderInterface::class, $service);
 
         $this->assertSame($fooTransport->reveal(), $service->get('foo'));
         $this->assertSame($barReceiver->reveal(), $service->get('bar'));

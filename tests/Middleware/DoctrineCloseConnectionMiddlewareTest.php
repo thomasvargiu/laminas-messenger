@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace TMV\Laminas\Messenger\Test\Middleware;
 
-use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\DBAL\Connection;
 use Doctrine\ORM\EntityManagerInterface;
 use InvalidArgumentException;

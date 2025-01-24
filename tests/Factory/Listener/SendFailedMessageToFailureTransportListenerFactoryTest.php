@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace TMV\Laminas\Messenger\Test\Factory\Listener;
 
 use PHPUnit\Framework\TestCase;
+use Prophecy\PhpUnit\ProphecyTrait;
 use Psr\Container\ContainerInterface;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Messenger\EventListener\SendFailedMessageToFailureTransportListener;
@@ -14,6 +15,7 @@ use TMV\Laminas\Messenger\Factory\Listener\SendFailedMessageToFailureTransportLi
 
 class SendFailedMessageToFailureTransportListenerFactoryTest extends TestCase
 {
+    use ProphecyTrait;
     public function testFactory(): void
     {
         $container = $this->prophesize(ContainerInterface::class);

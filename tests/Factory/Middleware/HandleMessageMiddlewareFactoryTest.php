@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace TMV\Laminas\Messenger\Test\Factory\Middleware;
 
 use PHPUnit\Framework\TestCase;
+use Prophecy\PhpUnit\ProphecyTrait;
 use Psr\Container\ContainerInterface;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Messenger\Middleware\HandleMessageMiddleware;
@@ -13,6 +14,7 @@ use TMV\Laminas\Messenger\Factory\Middleware\HandleMessageMiddlewareFactory;
 
 class HandleMessageMiddlewareFactoryTest extends TestCase
 {
+    use ProphecyTrait;
     public function testFactory(): void
     {
         $factory = [HandleMessageMiddlewareFactory::class, 'bus_name'];
@@ -42,6 +44,9 @@ class HandleMessageMiddlewareFactoryTest extends TestCase
         $factory = [HandleMessageMiddlewareFactory::class, 'bus_name'];
 
         $container = $this->prophesize(ContainerInterface::class);
+
+        $container->has('config')->willReturn(true);
+        $container->get('config')->willReturn([]);
 
         $service = $factory($container->reveal());
 

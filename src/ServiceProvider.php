@@ -9,6 +9,8 @@ use Symfony\Contracts\Service\ServiceProviderInterface;
 
 /**
  * @internal
+ *
+ * @template-implements ServiceProviderInterface<mixed>
  */
 class ServiceProvider implements ServiceProviderInterface
 {

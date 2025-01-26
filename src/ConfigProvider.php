@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace TMV\Laminas\Messenger;
 
+use Doctrine\Persistence\ConnectionRegistry;
 use Laminas\ServiceManager\Factory\InvokableFactory;
 use Symfony\Component\Messenger as SFMessenger;
 
@@ -20,11 +21,10 @@ class ConfigProvider
                 SFMessenger\Transport\TransportFactoryInterface::class => SFMessenger\Transport\TransportFactory::class,
             ],
             'factories' => [
-                Transport\Doctrine\DoctrineDBALTransportFactory::class => Factory\Transport\Doctrine\DoctrineDBALTransportFactoryFactory::class,
                 SFMessenger\Transport\InMemoryTransportFactory::class => InvokableFactory::class,
-                SFMessenger\Transport\AmqpExt\AmqpTransportFactory::class => InvokableFactory::class,
-                SFMessenger\Transport\Doctrine\DoctrineTransportFactory::class => InvokableFactory::class,
-                SFMessenger\Transport\RedisExt\RedisTransportFactory::class => InvokableFactory::class,
+                SFMessenger\Bridge\Amqp\Transport\AmqpTransportFactory::class => InvokableFactory::class,
+                SFMessenger\Bridge\Doctrine\Transport\DoctrineTransportFactory::class => Factory\Transport\Doctrine\DoctrineTransportFactoryFactory::class,
+                SFMessenger\Bridge\Redis\Transport\RedisTransportFactory::class => InvokableFactory::class,
                 SFMessenger\Transport\Sync\SyncTransportFactory::class => Factory\Transport\Sync\SyncTransportFactoryFactory::class,
                 SFMessenger\Transport\TransportFactory::class => Factory\Transport\TransportFactoryFactory::class,
                 SFMessenger\Transport\Sender\SendersLocator::class => Factory\Transport\Sender\SendersLocatorFactory::class,
@@ -59,6 +59,7 @@ class ConfigProvider
         return [
             'dependencies' => $this->getDependencies(),
             'messenger' => [
+                'doctrine_connection_registry' => ConnectionRegistry::class,
                 'failure_transport' => null,
                 'event_dispatcher' => 'messenger.event_dispatcher',
                 'logger' => null,
@@ -67,9 +68,9 @@ class ConfigProvider
                 'transport_factories' => [
                     SFMessenger\Transport\Sync\SyncTransportFactory::class,
                     SFMessenger\Transport\InMemoryTransportFactory::class,
-                    SFMessenger\Transport\AmqpExt\AmqpTransportFactory::class,
-                    SFMessenger\Transport\RedisExt\RedisTransportFactory::class,
-                    Transport\Doctrine\DoctrineDBALTransportFactory::class,
+                    SFMessenger\Bridge\Doctrine\Transport\DoctrineTransportFactory::class,
+                    SFMessenger\Bridge\Redis\Transport\RedisTransportFactory::class,
+                    SFMessenger\Bridge\Amqp\Transport\AmqpTransportFactory::class,
                 ],
                 'buses' => [
                     'messenger.bus.default' => [

@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace TMV\Laminas\Messenger\Test\Factory\Transport\Doctrine;
 
+use Doctrine\Persistence\ConnectionRegistry;
 use PHPUnit\Framework\TestCase;
 use Prophecy\PhpUnit\ProphecyTrait;
 use Psr\Container\ContainerInterface;
-use TMV\Laminas\Messenger\Factory\Transport\Doctrine\DoctrineDBALTransportFactoryFactory;
-use TMV\Laminas\Messenger\Transport\Doctrine\DoctrineDBALTransportFactory;
-use TypeError;
+use Symfony\Component\Messenger\Bridge\Doctrine\Transport\DoctrineTransportFactory;
+use TMV\Laminas\Messenger\Factory\Transport\Doctrine\DoctrineTransportFactoryFactory;
 
 class DoctrineDBALTransportFactoryFactoryTest extends TestCase
 {
@@ -17,18 +17,18 @@ class DoctrineDBALTransportFactoryFactoryTest extends TestCase
 
     public function testFactory(): void
     {
+        $config = [
+            'messenger' => [
+                'doctrine_connection_registry' => 'connection_registry',
+            ],
+        ];
         $container = $this->prophesize(ContainerInterface::class);
-        $factory = new DoctrineDBALTransportFactoryFactory();
+        $connectionRegistry = $this->prophesize(ConnectionRegistry::class);
+        $container->get('config')->willReturn($config);
+        $container->get('connection_registry')->willReturn($connectionRegistry->reveal());
+        $factory = new DoctrineTransportFactoryFactory();
         $service = $factory($container->reveal());
 
-        $this->assertInstanceOf(DoctrineDBALTransportFactory::class, $service);
-    }
-
-    public function testFactoryWithoutContainer(): void
-    {
-        $this->expectException(TypeError::class);
-
-        $factory = new DoctrineDBALTransportFactoryFactory();
-        $factory(null);
+        $this->assertInstanceOf(DoctrineTransportFactory::class, $service);
     }
 }

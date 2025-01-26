@@ -1,14 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <files psalm-version="5.26.1@d747f6500b38ac4f7dfc5edbcae6e4b637d7add0">
-  <file src="src/ConfigProvider.php">
-    <DeprecatedClass>
-      <code><![CDATA[SFMessenger\Transport\AmqpExt\AmqpTransportFactory::class]]></code>
-      <code><![CDATA[SFMessenger\Transport\AmqpExt\AmqpTransportFactory::class]]></code>
-      <code><![CDATA[SFMessenger\Transport\Doctrine\DoctrineTransportFactory::class]]></code>
-      <code><![CDATA[SFMessenger\Transport\RedisExt\RedisTransportFactory::class]]></code>
-      <code><![CDATA[SFMessenger\Transport\RedisExt\RedisTransportFactory::class]]></code>
-    </DeprecatedClass>
-  </file>
   <file src="src/Factory/Command/ConsumeMessagesCommandFactory.php">
     <MixedArgument>
       <code><![CDATA[$container->get($eventDispatcher)]]></code>
@@ -171,16 +162,6 @@
       <code><![CDATA[$container]]></code>
     </UnusedParam>
   </file>
-  <file src="src/Factory/Middleware/DoctrineCloseConnectionMiddlewareFactory.php">
-    <MixedArgument>
-      <code><![CDATA[$container->get(ManagerRegistry::class)]]></code>
-    </MixedArgument>
-  </file>
-  <file src="src/Factory/Middleware/DoctrineTransactionMiddlewareFactory.php">
-    <MixedArgument>
-      <code><![CDATA[$container->get(ManagerRegistry::class)]]></code>
-    </MixedArgument>
-  </file>
   <file src="src/Factory/Middleware/HandleMessageMiddlewareFactory.php">
     <MixedArgument>
       <code><![CDATA[$container->get($logger)]]></code>
@@ -223,22 +204,39 @@
       <code><![CDATA[$transports]]></code>
     </MixedAssignment>
   </file>
+  <file src="src/Factory/Transport/Doctrine/DoctrineTransportFactoryFactory.php">
+    <PossiblyNullArgument>
+      <code><![CDATA[$config['messenger']['doctrine_connection_registry']]]></code>
+    </PossiblyNullArgument>
+    <PossiblyNullArrayAccess>
+      <code><![CDATA[$config['messenger']['doctrine_connection_registry']]]></code>
+    </PossiblyNullArrayAccess>
+    <PossiblyUndefinedArrayOffset>
+      <code><![CDATA[$config['messenger']]]></code>
+    </PossiblyUndefinedArrayOffset>
+  </file>
   <file src="src/Factory/Transport/Receiver/ReceiversLocatorFactory.php">
-    <InvalidCast>
-      <code><![CDATA[$name]]></code>
-      <code><![CDATA[$name]]></code>
-    </InvalidCast>
+    <InvalidArrayOffset>
+      <code><![CDATA[$factories[$name]]]></code>
+    </InvalidArrayOffset>
     <MixedArgument>
       <code><![CDATA[$config['messenger']['transports'] ?? []]]></code>
       <code><![CDATA[$name]]></code>
+      <code><![CDATA[$name]]></code>
       <code><![CDATA[$serviceName]]></code>
     </MixedArgument>
+    <MixedArgumentTypeCoercion>
+      <code><![CDATA[$factories]]></code>
+    </MixedArgumentTypeCoercion>
     <MixedArrayAccess>
       <code><![CDATA[$config['messenger']]]></code>
       <code><![CDATA[$config['messenger']]]></code>
       <code><![CDATA[$config['messenger']['receivers']]]></code>
       <code><![CDATA[$config['messenger']['transports']]]></code>
     </MixedArrayAccess>
+    <MixedArrayOffset>
+      <code><![CDATA[$factories[$name]]]></code>
+    </MixedArrayOffset>
     <MixedAssignment>
       <code><![CDATA[$config]]></code>
       <code><![CDATA[$name]]></code>
@@ -250,10 +248,11 @@
       <code><![CDATA[ReceiverInterface]]></code>
     </MixedInferredReturnType>
     <MixedReturnStatement>
+      <code><![CDATA[$container->get($name)]]></code>
       <code><![CDATA[$container->get($serviceName)]]></code>
-      <code><![CDATA[$container->get((string) $name)]]></code>
     </MixedReturnStatement>
     <NoValue>
+      <code><![CDATA[$name]]></code>
       <code><![CDATA[$name]]></code>
     </NoValue>
     <UnusedForeachValue>
@@ -341,26 +340,5 @@
     <ImplementedReturnTypeMismatch>
       <code><![CDATA[iterable<string, string>]]></code>
     </ImplementedReturnTypeMismatch>
-  </file>
-  <file src="src/Transport/Doctrine/DoctrineDBALTransportFactory.php">
-    <InternalClass>
-      <code><![CDATA[Connection::buildConfiguration($dsn, $options)]]></code>
-      <code><![CDATA[new Connection($configuration, $driverConnection)]]></code>
-    </InternalClass>
-    <InternalMethod>
-      <code><![CDATA[Connection::buildConfiguration($dsn, $options)]]></code>
-      <code><![CDATA[new Connection($configuration, $driverConnection)]]></code>
-    </InternalMethod>
-    <MixedArgument>
-      <code><![CDATA[$configuration['connection']]]></code>
-      <code><![CDATA[$driverConnection]]></code>
-    </MixedArgument>
-    <MixedAssignment>
-      <code><![CDATA[$driverConnection]]></code>
-    </MixedAssignment>
-    <MoreSpecificImplementedParamType>
-      <code><![CDATA[$options]]></code>
-      <code><![CDATA[$options]]></code>
-    </MoreSpecificImplementedParamType>
   </file>
 </files>

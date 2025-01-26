@@ -27,17 +27,17 @@ final class ReceiversLocatorFactory
         $receivers = $config['messenger']['receivers'] ?? [];
 
         foreach ($transportNames as $name) {
-            $factories[(string) $name] = static function () use ($name, $container): ReceiverInterface {
-                return $container->get((string) $name);
+            $factories[$name] = static function () use ($name, $container): ReceiverInterface {
+                return $container->get($name);
             };
         }
 
         foreach ($receivers as $name => $serviceName) {
-            if (array_key_exists((string) $name, $factories)) {
+            if (array_key_exists($name, $factories)) {
                 throw new InvalidArgumentException(sprintf('A receiver named "%s" already exists as a transport name', $name));
             }
 
-            $factories[(string) $name] = static function () use ($serviceName, $container): ReceiverInterface {
+            $factories[$name] = static function () use ($serviceName, $container): ReceiverInterface {
                 return $container->get($serviceName);
             };
         }

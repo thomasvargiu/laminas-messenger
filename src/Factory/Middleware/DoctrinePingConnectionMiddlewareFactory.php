@@ -8,21 +8,27 @@ use Doctrine\Persistence\ManagerRegistry;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\Messenger\Middleware\MiddlewareInterface;
 use TMV\Laminas\Messenger\Exception\InvalidArgumentException;
-use TMV\Laminas\Messenger\Middleware\DoctrineTransactionMiddleware;
+use TMV\Laminas\Messenger\Middleware\DoctrinePingConnectionMiddleware;
 
-/**
- * @psalm-api
- */
-final class DoctrineTransactionMiddlewareFactory extends AbstractDoctrineMiddlewareFactory
+final class DoctrinePingConnectionMiddlewareFactory extends AbstractDoctrineMiddlewareFactory
 {
+    private string $query;
+
+    public function __construct(string $connectionName = 'orm_default', string $query = 'SELECT 1;')
+    {
+        parent::__construct($connectionName);
+        $this->query = $query;
+    }
+
     public function __invoke(ContainerInterface $container): MiddlewareInterface
     {
         /** @var ManagerRegistry $manager */
         $manager = $container->get(ManagerRegistry::class);
 
-        return new DoctrineTransactionMiddleware(
+        return new DoctrinePingConnectionMiddleware(
             $manager,
             $this->connectionName ?? $manager->getDefaultConnectionName(),
+            $this->query
         );
     }
 
@@ -41,5 +47,16 @@ final class DoctrineTransactionMiddlewareFactory extends AbstractDoctrineMiddlew
         }
 
         return (new self($name))($arguments[0]);
+    }
+
+    /**
+     * @param array{connectionName: string, query: string} $data
+     */
+    public static function __set_state(array $data): self
+    {
+        return new self(
+            $data['connectionName'] ?? 'orm_default',
+            $data['query'] ?? 'SELECT 1;',
+        );
     }
 }

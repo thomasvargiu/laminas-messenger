@@ -2,9 +2,10 @@
 
 declare(strict_types=1);
 
-namespace TMV\Laminas\Messenger\Test\Factory\Transport;
+namespace TMV\Laminas\Messenger\Test\Factory;
 
 use PHPUnit\Framework\TestCase;
+use Prophecy\Argument;
 use Prophecy\PhpUnit\ProphecyTrait;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\Messenger\Transport\TransportFactoryInterface;
@@ -21,23 +22,27 @@ class TransportFactoryFactoryTest extends TestCase
             'messenger' => [
                 'transport_factories' => [
                     'foo_factory',
+                    TransportFactoryInterface::class,
                 ],
             ],
         ]);
 
-        $fooFactory = $this->prophesize(TransportFactoryInterface::class);
-        $fooFactory->supports('foo', [])->willReturn(true);
-        $fooFactory->supports('bar', [])->willReturn(false);
+        $transport = $this->prophesize(TransportFactoryInterface::class);
+        $transport->supports('foo', Argument::cetera())->willReturn(true);
 
+        $container->has('foo_factory')->willReturn(false);
         $container->get('foo_factory')
+            ->shouldNotBeCalled();
+
+        $container->has(TransportFactoryInterface::class)->willReturn(true);
+        $container->get(TransportFactoryInterface::class)
             ->shouldBeCalled()
-            ->willReturn($fooFactory->reveal());
+            ->willReturn($transport->reveal());
 
         $factory = new TransportFactoryFactory();
 
         $service = $factory($container->reveal());
 
         $this->assertTrue($service->supports('foo', []));
-        $this->assertFalse($service->supports('bar', []));
     }
 }

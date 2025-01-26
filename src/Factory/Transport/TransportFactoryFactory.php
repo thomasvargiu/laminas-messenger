@@ -4,11 +4,10 @@ declare(strict_types=1);
 
 namespace TMV\Laminas\Messenger\Factory\Transport;
 
+use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\Messenger\Transport\TransportFactory;
 use Symfony\Component\Messenger\Transport\TransportFactoryInterface;
-
-use function array_map;
 
 /**
  * @psalm-api
@@ -17,11 +16,25 @@ final class TransportFactoryFactory
 {
     public function __invoke(ContainerInterface $container): TransportFactory
     {
-        /** @var string[] $transportFactories */
+        /** @var array<string> $transportFactories */
         $transportFactories = $container->get('config')['messenger']['transport_factories'] ?? [];
-        // $transportFactories = \array_filter($transportFactories, \Closure::fromCallable([$this, 'filterSyncTransport']));
         /** @var TransportFactoryInterface[] $factories */
-        $factories = array_map([$container, 'get'], $transportFactories);
+        $factories = [];
+
+        foreach ($transportFactories as $name) {
+            if (! $container->has($name)) {
+                continue;
+            }
+            try {
+                /** @var mixed $factory */
+                $factory = $container->get($name);
+                if ($factory instanceof TransportFactoryInterface) {
+                    $factories[] = $factory;
+                }
+            } catch (ContainerExceptionInterface $e) {
+                /** ignore */
+            }
+        }
 
         return new TransportFactory($factories);
     }

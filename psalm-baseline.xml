@@ -1,12 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="5.26.1@d747f6500b38ac4f7dfc5edbcae6e4b637d7add0">
+<files psalm-version="6.0.0@b8e96bb617bf59382113b1b56cef751f648a7dc9">
+  <file src="src/Bridge/Doctrine/Factory/Middleware/AbstractDoctrineMiddlewareFactory.php">
+    <InvalidArrayOffset>
+      <code><![CDATA[$this->getConfig($container)['doctrine']]]></code>
+    </InvalidArrayOffset>
+    <MixedArgument>
+      <code><![CDATA[$data['name'] ?? null]]></code>
+    </MixedArgument>
+    <UnsafeInstantiation>
+      <code><![CDATA[new static($data['name'] ?? null)]]></code>
+      <code><![CDATA[new static($name)]]></code>
+    </UnsafeInstantiation>
+  </file>
+  <file src="src/Bridge/Doctrine/Factory/Middleware/DoctrineOpenTransactionLoggerMiddlewareFactory.php">
+    <MixedArgument>
+      <code><![CDATA[$logger && $container->has($logger) ? $container->get($logger) : null]]></code>
+    </MixedArgument>
+    <RiskyTruthyFalsyComparison>
+      <code><![CDATA[$logger]]></code>
+    </RiskyTruthyFalsyComparison>
+  </file>
+  <file src="src/Bridge/Doctrine/Middleware/AbstractDoctrineMiddleware.php">
+    <ArgumentTypeCoercion>
+      <code><![CDATA[$connection]]></code>
+    </ArgumentTypeCoercion>
+  </file>
+  <file src="src/Bridge/Doctrine/Middleware/DoctrineClearEntityManagerWorkerSubscriber.php">
+    <ImplementedReturnTypeMismatch>
+      <code><![CDATA[iterable<string, string>]]></code>
+    </ImplementedReturnTypeMismatch>
+  </file>
+  <file src="src/Bridge/Doctrine/Middleware/DoctrineCloseConnectionMiddleware.php">
+    <PossiblyUndefinedVariable>
+      <code><![CDATA[$connection]]></code>
+    </PossiblyUndefinedVariable>
+  </file>
   <file src="src/Factory/Command/ConsumeMessagesCommandFactory.php">
     <MixedArgument>
       <code><![CDATA[$container->get($eventDispatcher)]]></code>
       <code><![CDATA[$container->get('messenger.receivers_locator')]]></code>
       <code><![CDATA[$eventDispatcher]]></code>
       <code><![CDATA[$logger]]></code>
-      <code><![CDATA[$logger ? $container->get($logger) : null]]></code>
+      <code><![CDATA[$logger && $container->has($logger) ? $container->get($logger) : null]]></code>
       <code><![CDATA[$transports]]></code>
     </MixedArgument>
     <MixedArrayAccess>
@@ -47,7 +82,7 @@
     <MixedArgument>
       <code><![CDATA[$container->get($eventDispatcher)]]></code>
       <code><![CDATA[$eventDispatcher]]></code>
-      <code><![CDATA[$logger ? $container->get($logger) : null]]></code>
+      <code><![CDATA[$logger && $container->has($logger) ? $container->get($logger) : null]]></code>
     </MixedArgument>
     <MixedArrayAccess>
       <code><![CDATA[$config['messenger']]]></code>
@@ -128,7 +163,7 @@
   <file src="src/Factory/Listener/SendFailedMessageForRetryListenerFactory.php">
     <MixedArgument>
       <code><![CDATA[$container->get('messenger.retry_strategy_locator')]]></code>
-      <code><![CDATA[$logger ? $container->get($logger) : null]]></code>
+      <code><![CDATA[$logger && $container->has($logger) ? $container->get($logger) : null]]></code>
     </MixedArgument>
     <RiskyTruthyFalsyComparison>
       <code><![CDATA[$logger]]></code>
@@ -137,7 +172,7 @@
   <file src="src/Factory/Listener/SendFailedMessageToFailureTransportListenerFactory.php">
     <MixedArgument>
       <code><![CDATA[$container->get($failureTransportName)]]></code>
-      <code><![CDATA[$logger ? $container->get($logger) : null]]></code>
+      <code><![CDATA[$logger && $container->has($logger) ? $container->get($logger) : null]]></code>
     </MixedArgument>
     <RiskyTruthyFalsyComparison>
       <code><![CDATA[$logger]]></code>
@@ -147,7 +182,7 @@
     <MixedArgument>
       <code><![CDATA[$cachePoolForRestartSignal]]></code>
       <code><![CDATA[$container->get($cachePoolForRestartSignal)]]></code>
-      <code><![CDATA[$logger ? $container->get($logger) : null]]></code>
+      <code><![CDATA[$logger && $container->has($logger) ? $container->get($logger) : null]]></code>
     </MixedArgument>
     <MixedAssignment>
       <code><![CDATA[$cachePoolForRestartSignal]]></code>
@@ -157,29 +192,81 @@
       <code><![CDATA[$logger]]></code>
     </RiskyTruthyFalsyComparison>
   </file>
+  <file src="src/Factory/Middleware/AbstractDoctrineMiddlewareFactory.php">
+    <UnusedClass>
+      <code><![CDATA[AbstractDoctrineMiddlewareFactory]]></code>
+    </UnusedClass>
+  </file>
   <file src="src/Factory/Middleware/AddBusNameStampMiddlewareFactory.php">
+    <MixedArgument>
+      <code><![CDATA[$data['busName'] ?? null]]></code>
+    </MixedArgument>
+    <PossiblyNullArgument>
+      <code><![CDATA[$data['busName'] ?? null]]></code>
+    </PossiblyNullArgument>
     <UnusedParam>
       <code><![CDATA[$container]]></code>
     </UnusedParam>
   </file>
+  <file src="src/Factory/Middleware/DoctrineClearEntityManagerMiddlewareFactory.php">
+    <InvalidExtendClass>
+      <code><![CDATA[\TMV\Laminas\Messenger\Bridge\Doctrine\Factory\Middleware\DoctrineClearEntityManagerMiddlewareFactory]]></code>
+    </InvalidExtendClass>
+    <UnusedClass>
+      <code><![CDATA[DoctrineClearEntityManagerMiddlewareFactory]]></code>
+    </UnusedClass>
+  </file>
+  <file src="src/Factory/Middleware/DoctrineCloseConnectionMiddlewareFactory.php">
+    <InvalidExtendClass>
+      <code><![CDATA[\TMV\Laminas\Messenger\Bridge\Doctrine\Factory\Middleware\DoctrineCloseConnectionMiddlewareFactory]]></code>
+    </InvalidExtendClass>
+    <UnusedClass>
+      <code><![CDATA[DoctrineCloseConnectionMiddlewareFactory]]></code>
+    </UnusedClass>
+  </file>
+  <file src="src/Factory/Middleware/DoctrinePingConnectionMiddlewareFactory.php">
+    <InvalidExtendClass>
+      <code><![CDATA[\TMV\Laminas\Messenger\Bridge\Doctrine\Factory\Middleware\DoctrinePingConnectionMiddlewareFactory]]></code>
+    </InvalidExtendClass>
+    <UnusedClass>
+      <code><![CDATA[DoctrinePingConnectionMiddlewareFactory]]></code>
+    </UnusedClass>
+  </file>
+  <file src="src/Factory/Middleware/DoctrineTransactionMiddlewareFactory.php">
+    <InvalidExtendClass>
+      <code><![CDATA[\TMV\Laminas\Messenger\Bridge\Doctrine\Factory\Middleware\DoctrineTransactionMiddlewareFactory]]></code>
+    </InvalidExtendClass>
+    <UnusedClass>
+      <code><![CDATA[DoctrineTransactionMiddlewareFactory]]></code>
+    </UnusedClass>
+  </file>
   <file src="src/Factory/Middleware/HandleMessageMiddlewareFactory.php">
     <MixedArgument>
       <code><![CDATA[$container->get($logger)]]></code>
+      <code><![CDATA[$data['busName'] ?? null]]></code>
     </MixedArgument>
+    <PossiblyNullArgument>
+      <code><![CDATA[$data['busName'] ?? null]]></code>
+    </PossiblyNullArgument>
+    <RiskyTruthyFalsyComparison>
+      <code><![CDATA[$logger]]></code>
+    </RiskyTruthyFalsyComparison>
   </file>
   <file src="src/Factory/Middleware/SendMessageMiddlewareFactory.php">
     <MixedArgument>
       <code><![CDATA[$container->get($logger)]]></code>
+      <code><![CDATA[$data['busName'] ?? null]]></code>
       <code><![CDATA[$eventDispatcher ? $container->get($eventDispatcher) : null]]></code>
     </MixedArgument>
+    <PossiblyNullArgument>
+      <code><![CDATA[$data['busName'] ?? null]]></code>
+    </PossiblyNullArgument>
     <RiskyTruthyFalsyComparison>
       <code><![CDATA[$eventDispatcher]]></code>
+      <code><![CDATA[$logger]]></code>
     </RiskyTruthyFalsyComparison>
   </file>
   <file src="src/Factory/Retry/RetryStrategyFactory.php">
-    <MixedInferredReturnType>
-      <code><![CDATA[RetryStrategyInterface]]></code>
-    </MixedInferredReturnType>
     <MixedReturnStatement>
       <code><![CDATA[$container->get($retryConfig)]]></code>
     </MixedReturnStatement>
@@ -203,17 +290,6 @@
       <code><![CDATA[$name]]></code>
       <code><![CDATA[$transports]]></code>
     </MixedAssignment>
-  </file>
-  <file src="src/Factory/Transport/Doctrine/DoctrineTransportFactoryFactory.php">
-    <PossiblyNullArgument>
-      <code><![CDATA[$config['messenger']['doctrine_connection_registry']]]></code>
-    </PossiblyNullArgument>
-    <PossiblyNullArrayAccess>
-      <code><![CDATA[$config['messenger']['doctrine_connection_registry']]]></code>
-    </PossiblyNullArrayAccess>
-    <PossiblyUndefinedArrayOffset>
-      <code><![CDATA[$config['messenger']]]></code>
-    </PossiblyUndefinedArrayOffset>
   </file>
   <file src="src/Factory/Transport/Receiver/ReceiversLocatorFactory.php">
     <InvalidArrayOffset>
@@ -243,10 +319,6 @@
       <code><![CDATA[$receivers]]></code>
       <code><![CDATA[$serviceName]]></code>
     </MixedAssignment>
-    <MixedInferredReturnType>
-      <code><![CDATA[ReceiverInterface]]></code>
-      <code><![CDATA[ReceiverInterface]]></code>
-    </MixedInferredReturnType>
     <MixedReturnStatement>
       <code><![CDATA[$container->get($name)]]></code>
       <code><![CDATA[$container->get($serviceName)]]></code>
@@ -281,9 +353,6 @@
       <code><![CDATA[$transportConfig]]></code>
       <code><![CDATA[$transportFactory]]></code>
     </MixedAssignment>
-    <MixedInferredReturnType>
-      <code><![CDATA[TransportInterface]]></code>
-    </MixedInferredReturnType>
     <MixedMethodCall>
       <code><![CDATA[createTransport]]></code>
     </MixedMethodCall>
@@ -316,29 +385,57 @@
     <MixedAssignment>
       <code><![CDATA[$expectedTransport]]></code>
     </MixedAssignment>
+    <PossiblyFalseOperand>
+      <code><![CDATA[class_implements($class)]]></code>
+      <code><![CDATA[class_parents($class)]]></code>
+    </PossiblyFalseOperand>
     <RedundantConditionGivenDocblockType>
       <code><![CDATA[is_string($handlerDescriptor)]]></code>
     </RedundantConditionGivenDocblockType>
   </file>
+  <file src="src/Middleware/AbstractDoctrineMiddleware.php">
+    <UnusedClass>
+      <code><![CDATA[AbstractDoctrineMiddleware]]></code>
+    </UnusedClass>
+  </file>
+  <file src="src/Middleware/DoctrineClearEntityManagerMiddleware.php">
+    <InvalidExtendClass>
+      <code><![CDATA[\TMV\Laminas\Messenger\Bridge\Doctrine\Middleware\DoctrineClearEntityManagerMiddleware]]></code>
+    </InvalidExtendClass>
+    <UnusedClass>
+      <code><![CDATA[DoctrineClearEntityManagerMiddleware]]></code>
+    </UnusedClass>
+  </file>
   <file src="src/Middleware/DoctrineCloseConnectionMiddleware.php">
-    <PossiblyUndefinedVariable>
-      <code><![CDATA[$connection]]></code>
-    </PossiblyUndefinedVariable>
+    <InvalidExtendClass>
+      <code><![CDATA[\TMV\Laminas\Messenger\Bridge\Doctrine\Middleware\DoctrineCloseConnectionMiddleware]]></code>
+    </InvalidExtendClass>
+    <UnusedClass>
+      <code><![CDATA[DoctrineCloseConnectionMiddleware]]></code>
+    </UnusedClass>
+  </file>
+  <file src="src/Middleware/DoctrinePingConnectionMiddleware.php">
+    <InvalidExtendClass>
+      <code><![CDATA[\TMV\Laminas\Messenger\Bridge\Doctrine\Middleware\DoctrinePingConnectionMiddleware]]></code>
+    </InvalidExtendClass>
+    <UnusedClass>
+      <code><![CDATA[DoctrinePingConnectionMiddleware]]></code>
+    </UnusedClass>
+  </file>
+  <file src="src/Middleware/DoctrineTransactionMiddleware.php">
+    <InvalidExtendClass>
+      <code><![CDATA[\TMV\Laminas\Messenger\Bridge\Doctrine\Middleware\DoctrineTransactionMiddleware]]></code>
+    </InvalidExtendClass>
+    <UnusedClass>
+      <code><![CDATA[DoctrineTransactionMiddleware]]></code>
+    </UnusedClass>
   </file>
   <file src="src/ServiceProvider.php">
-    <MixedInferredReturnType>
-      <code><![CDATA[array]]></code>
-    </MixedInferredReturnType>
     <MixedReturnStatement>
       <code><![CDATA[$this->providedServices]]></code>
     </MixedReturnStatement>
     <UndefinedThisPropertyFetch>
       <code><![CDATA[$this->providedServices]]></code>
     </UndefinedThisPropertyFetch>
-  </file>
-  <file src="src/Subscriber/DoctrineClearEntityManagerWorkerSubscriber.php">
-    <ImplementedReturnTypeMismatch>
-      <code><![CDATA[iterable<string, string>]]></code>
-    </ImplementedReturnTypeMismatch>
   </file>
 </files>

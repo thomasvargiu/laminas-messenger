@@ -48,6 +48,9 @@ class FailedMessagesRetryCommandFactoryTest extends TestCase
             ->shouldBeCalled()
             ->willReturn($routableMessageBus->reveal());
 
+        $container->has('my.logger')
+            ->shouldBeCalled()
+            ->willReturn(true);
         $container->get('my.logger')
             ->shouldBeCalled()
             ->willReturn($logger->reveal());

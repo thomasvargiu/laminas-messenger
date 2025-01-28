@@ -47,6 +47,9 @@ class ConsumeMessagesCommandFactoryTest extends TestCase
             ->shouldBeCalled()
             ->willReturn($eventDispatcher->reveal());
 
+        $container->has('my.logger')
+            ->shouldBeCalled()
+            ->willReturn(true);
         $container->get('my.logger')
             ->shouldBeCalled()
             ->willReturn($logger->reveal());

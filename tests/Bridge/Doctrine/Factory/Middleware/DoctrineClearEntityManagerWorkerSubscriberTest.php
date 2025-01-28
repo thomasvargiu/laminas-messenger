@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace TMV\Laminas\Messenger\Test\Subscriber;
+namespace TMV\Laminas\Messenger\Test\Bridge\Doctrine\Factory\Middleware;
 
-use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\Persistence\ManagerRegistry;
 use PHPUnit\Framework\TestCase;
 use Prophecy\PhpUnit\ProphecyTrait;
 use Symfony\Component\Messenger\Event\WorkerMessageFailedEvent;
 use Symfony\Component\Messenger\Event\WorkerMessageHandledEvent;
-use TMV\Laminas\Messenger\Subscriber\DoctrineClearEntityManagerWorkerSubscriber;
+use TMV\Laminas\Messenger\Bridge\Doctrine\Middleware\DoctrineClearEntityManagerWorkerSubscriber;
 
 class DoctrineClearEntityManagerWorkerSubscriberTest extends TestCase
 {

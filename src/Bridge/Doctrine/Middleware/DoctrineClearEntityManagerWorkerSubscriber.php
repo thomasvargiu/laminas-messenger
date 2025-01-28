@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace TMV\Laminas\Messenger\Subscriber;
+namespace TMV\Laminas\Messenger\Bridge\Doctrine\Middleware;
 
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;

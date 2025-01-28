@@ -4,12 +4,15 @@ declare(strict_types=1);
 
 namespace TMV\Laminas\Messenger;
 
-use Doctrine\Persistence\ConnectionRegistry;
+use Doctrine\Persistence\ManagerRegistry;
 use Laminas\ServiceManager\Factory\InvokableFactory;
+use Psr\Log\LoggerInterface;
 use Symfony\Component\Messenger as SFMessenger;
 
 class ConfigProvider
 {
+    public const CONFIG_KEY = 'messenger';
+
     /**
      * @return array<string, mixed>
      */
@@ -23,7 +26,7 @@ class ConfigProvider
             'factories' => [
                 SFMessenger\Transport\InMemoryTransportFactory::class => InvokableFactory::class,
                 SFMessenger\Bridge\Amqp\Transport\AmqpTransportFactory::class => InvokableFactory::class,
-                SFMessenger\Bridge\Doctrine\Transport\DoctrineTransportFactory::class => Factory\Transport\Doctrine\DoctrineTransportFactoryFactory::class,
+                SFMessenger\Bridge\Doctrine\Transport\DoctrineTransportFactory::class => Bridge\Doctrine\Factory\Transport\DoctrineTransportFactoryFactory::class,
                 SFMessenger\Bridge\Redis\Transport\RedisTransportFactory::class => InvokableFactory::class,
                 SFMessenger\Transport\Sync\SyncTransportFactory::class => Factory\Transport\Sync\SyncTransportFactoryFactory::class,
                 SFMessenger\Transport\TransportFactory::class => Factory\Transport\TransportFactoryFactory::class,
@@ -59,10 +62,13 @@ class ConfigProvider
         return [
             'dependencies' => $this->getDependencies(),
             'messenger' => [
-                'doctrine_connection_registry' => ConnectionRegistry::class,
+                'doctrine' => [
+                    'connection_registry' => null,
+                    'manager_registry' => ManagerRegistry::class,
+                ],
                 'failure_transport' => null,
                 'event_dispatcher' => 'messenger.event_dispatcher',
-                'logger' => null,
+                'logger' => LoggerInterface::class,
                 'default_serializer' => SFMessenger\Transport\Serialization\PhpSerializer::class,
                 'cache_pool_for_restart_signal' => null,
                 'transport_factories' => [

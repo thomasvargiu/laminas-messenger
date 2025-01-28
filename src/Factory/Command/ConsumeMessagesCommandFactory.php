@@ -28,7 +28,7 @@ final class ConsumeMessagesCommandFactory
             $messageBus,
             $container->get('messenger.receivers_locator'),
             $container->get($eventDispatcher),
-            $logger ? $container->get($logger) : null,
+            $logger && $container->has($logger) ? $container->get($logger) : null,
             array_keys($transports)
         );
 

@@ -4,26 +4,21 @@ declare(strict_types=1);
 
 namespace TMV\Laminas\Messenger\Middleware;
 
-use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\Messenger\Envelope;
-use Symfony\Component\Messenger\Middleware\StackInterface;
-use Symfony\Component\Messenger\Stamp\ConsumedByWorkerStamp;
+use Doctrine\Persistence\ManagerRegistry;
 
-class DoctrineCloseConnectionMiddleware extends AbstractDoctrineMiddleware
+/**
+ * @deprecated Use {@see \TMV\Laminas\Messenger\Bridge\Doctrine\Middleware\DoctrineCloseConnectionMiddleware}
+ */
+class DoctrineCloseConnectionMiddleware extends \TMV\Laminas\Messenger\Bridge\Doctrine\Middleware\DoctrineCloseConnectionMiddleware
 {
-    protected function handleForManager(
-        EntityManagerInterface $entityManager,
-        Envelope $envelope,
-        StackInterface $stack
-    ): Envelope {
-        try {
-            $connection = $entityManager->getConnection();
+    public function __construct(ManagerRegistry $managerRegistry, ?string $entityManagerName = null)
+    {
+        parent::__construct($managerRegistry, $entityManagerName);
 
-            return $stack->next()->handle($envelope, $stack);
-        } finally {
-            if (null !== $envelope->last(ConsumedByWorkerStamp::class)) {
-                $connection->close();
-            }
-        }
+        trigger_error(sprintf(
+            'Class %s is deprecated, please use %s instead',
+            self::class,
+            \TMV\Laminas\Messenger\Bridge\Doctrine\Middleware\DoctrineCloseConnectionMiddleware::class
+        ), E_USER_DEPRECATED);
     }
 }

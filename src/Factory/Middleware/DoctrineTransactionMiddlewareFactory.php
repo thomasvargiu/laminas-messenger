@@ -4,42 +4,19 @@ declare(strict_types=1);
 
 namespace TMV\Laminas\Messenger\Factory\Middleware;
 
-use Doctrine\Persistence\ManagerRegistry;
-use Psr\Container\ContainerInterface;
-use Symfony\Component\Messenger\Middleware\MiddlewareInterface;
-use TMV\Laminas\Messenger\Exception\InvalidArgumentException;
-use TMV\Laminas\Messenger\Middleware\DoctrineTransactionMiddleware;
-
 /**
- * @psalm-api
+ * @deprecated Use {@see \TMV\Laminas\Messenger\Bridge\Doctrine\Factory\Middleware\DoctrineTransactionMiddlewareFactory}
  */
-final class DoctrineTransactionMiddlewareFactory extends AbstractDoctrineMiddlewareFactory
+class DoctrineTransactionMiddlewareFactory extends \TMV\Laminas\Messenger\Bridge\Doctrine\Factory\Middleware\DoctrineTransactionMiddlewareFactory
 {
-    public function __invoke(ContainerInterface $container): MiddlewareInterface
+    public function __construct(?string $connectionName = null)
     {
-        /** @var ManagerRegistry $manager */
-        $manager = $container->get(ManagerRegistry::class);
+        parent::__construct($connectionName);
 
-        return new DoctrineTransactionMiddleware(
-            $manager,
-            $this->connectionName ?? $manager->getDefaultConnectionName(),
-        );
-    }
-
-    /**
-     * @psalm-api
-     *
-     * @param array<int, mixed> $arguments
-     */
-    public static function __callStatic(string $name, array $arguments): MiddlewareInterface
-    {
-        if (! array_key_exists(0, $arguments) || ! $arguments[0] instanceof ContainerInterface) {
-            throw new InvalidArgumentException(sprintf(
-                'The first argument must be of type %s',
-                ContainerInterface::class
-            ));
-        }
-
-        return (new self($name))($arguments[0]);
+        trigger_error(sprintf(
+            'Class %s is deprecated, please use %s instead',
+            self::class,
+            \TMV\Laminas\Messenger\Bridge\Doctrine\Factory\Middleware\DoctrineTransactionMiddlewareFactory::class
+        ), E_USER_DEPRECATED);
     }
 }

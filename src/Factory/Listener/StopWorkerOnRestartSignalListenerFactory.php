@@ -29,7 +29,7 @@ final class StopWorkerOnRestartSignalListenerFactory
 
         return new StopWorkerOnRestartSignalListener(
             $container->get($cachePoolForRestartSignal),
-            $logger ? $container->get($logger) : null
+            $logger && $container->has($logger) ? $container->get($logger) : null,
         );
     }
 }

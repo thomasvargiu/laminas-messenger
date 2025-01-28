@@ -46,7 +46,7 @@ final class FailedMessagesRetryCommandFactory
             ]),
             $messageBus,
             $container->get($eventDispatcher),
-            $logger ? $container->get($logger) : null
+            $logger && $container->has($logger) ? $container->get($logger) : null,
         );
     }
 }

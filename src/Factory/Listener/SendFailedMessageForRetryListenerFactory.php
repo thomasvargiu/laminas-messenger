@@ -23,7 +23,7 @@ final class SendFailedMessageForRetryListenerFactory
         return new SendFailedMessageForRetryListener(
             $container,
             $container->get('messenger.retry_strategy_locator'),
-            $logger ? $container->get($logger) : null
+            $logger && $container->has($logger) ? $container->get($logger) : null,
         );
     }
 }

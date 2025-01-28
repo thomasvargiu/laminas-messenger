@@ -39,6 +39,7 @@ class DependencyInjectionTest extends TestCase
                     ],
                 ],
                 'messenger' => [
+                    'logger' => null,
                     'buses' => [
                         'messenger.bus.test' => [
                             'handlers' => [

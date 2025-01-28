@@ -30,7 +30,7 @@ final class SendFailedMessageToFailureTransportListenerFactory
 
         return new SendFailedMessageToFailureTransportListener(
             $container->get($failureTransportName),
-            $logger ? $container->get($logger) : null
+            $logger && $container->has($logger) ? $container->get($logger) : null,
         );
     }
 }

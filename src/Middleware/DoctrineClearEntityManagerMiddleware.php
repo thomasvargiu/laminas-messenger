@@ -7,9 +7,9 @@ namespace TMV\Laminas\Messenger\Middleware;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @deprecated Use {@see \TMV\Laminas\Messenger\Bridge\Doctrine\Middleware\DoctrinePingConnectionMiddleware}
+ * @deprecated Use {@see \TMV\Laminas\Messenger\Bridge\Doctrine\Middleware\DoctrineClearEntityManagerMiddleware}
  */
-class DoctrinePingConnectionMiddleware extends \TMV\Laminas\Messenger\Bridge\Doctrine\Middleware\DoctrinePingConnectionMiddleware
+class DoctrineClearEntityManagerMiddleware extends \TMV\Laminas\Messenger\Bridge\Doctrine\Middleware\DoctrineClearEntityManagerMiddleware
 {
     public function __construct(ManagerRegistry $managerRegistry, ?string $entityManagerName = null)
     {
@@ -18,7 +18,7 @@ class DoctrinePingConnectionMiddleware extends \TMV\Laminas\Messenger\Bridge\Doc
         trigger_error(sprintf(
             'Class %s is deprecated, please use %s instead',
             self::class,
-            \TMV\Laminas\Messenger\Bridge\Doctrine\Middleware\DoctrinePingConnectionMiddleware::class
+            \TMV\Laminas\Messenger\Bridge\Doctrine\Middleware\DoctrineClearEntityManagerMiddleware::class
         ), E_USER_DEPRECATED);
     }
 }

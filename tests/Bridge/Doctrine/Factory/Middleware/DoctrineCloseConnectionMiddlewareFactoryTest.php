@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace TMV\Laminas\Messenger\Test\Factory\Middleware;
+namespace TMV\Laminas\Messenger\Test\Bridge\Doctrine\Factory\Middleware;
 
 use Doctrine\Persistence\ManagerRegistry;
 use PHPUnit\Framework\TestCase;
 use Prophecy\PhpUnit\ProphecyTrait;
 use Psr\Container\ContainerInterface;
+use TMV\Laminas\Messenger\Bridge\Doctrine\Factory\Middleware\DoctrineCloseConnectionMiddlewareFactory;
+use TMV\Laminas\Messenger\Bridge\Doctrine\Middleware\DoctrineCloseConnectionMiddleware;
 use TMV\Laminas\Messenger\Exception\InvalidArgumentException;
-use TMV\Laminas\Messenger\Factory\Middleware\DoctrineCloseConnectionMiddlewareFactory;
-use TMV\Laminas\Messenger\Middleware\DoctrineCloseConnectionMiddleware;
 
 class DoctrineCloseConnectionMiddlewareFactoryTest extends TestCase
 {
@@ -18,7 +18,15 @@ class DoctrineCloseConnectionMiddlewareFactoryTest extends TestCase
 
     public function testFactory(): void
     {
+        $config = [
+            'messenger' => [
+                'doctrine' => [
+                    'manager_registry' => ManagerRegistry::class,
+                ],
+            ],
+        ];
         $container = $this->prophesize(ContainerInterface::class);
+        $container->get('config')->willReturn($config);
         $managerRegistry = $this->prophesize(ManagerRegistry::class);
 
         $container->get(ManagerRegistry::class)

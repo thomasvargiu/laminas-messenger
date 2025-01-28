@@ -4,17 +4,19 @@ declare(strict_types=1);
 
 namespace TMV\Laminas\Messenger\Factory\Middleware;
 
-use Psr\Container\ContainerInterface;
-use Symfony\Component\Messenger\Middleware\MiddlewareInterface;
-
-abstract class AbstractDoctrineMiddlewareFactory
+/**
+ * @deprecated Use {@see \TMV\Laminas\Messenger\Bridge\Doctrine\Factory\Middleware\AbstractDoctrineMiddlewareFactory}
+ */
+abstract class AbstractDoctrineMiddlewareFactory extends \TMV\Laminas\Messenger\Bridge\Doctrine\Factory\Middleware\AbstractDoctrineMiddlewareFactory
 {
-    protected ?string $connectionName;
-
-    public function __construct(string $connectionName = null)
+    public function __construct(?string $connectionName = null)
     {
-        $this->connectionName = $connectionName;
-    }
+        parent::__construct($connectionName);
 
-    abstract public function __invoke(ContainerInterface $container): MiddlewareInterface;
+        trigger_error(sprintf(
+            'Class %s is deprecated, please use %s instead',
+            self::class,
+            \TMV\Laminas\Messenger\Bridge\Doctrine\Factory\Middleware\AbstractDoctrineMiddlewareFactory::class
+        ), E_USER_DEPRECATED);
+    }
 }

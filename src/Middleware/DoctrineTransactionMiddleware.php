@@ -4,41 +4,21 @@ declare(strict_types=1);
 
 namespace TMV\Laminas\Messenger\Middleware;
 
-use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\Messenger\Envelope;
-use Symfony\Component\Messenger\Exception\HandlerFailedException;
-use Symfony\Component\Messenger\Middleware\StackInterface;
-use Symfony\Component\Messenger\Stamp\HandledStamp;
-use Throwable;
+use Doctrine\Persistence\ManagerRegistry;
 
-class DoctrineTransactionMiddleware extends AbstractDoctrineMiddleware
+/**
+ * @deprecated Use {@see \TMV\Laminas\Messenger\Bridge\Doctrine\Middleware\DoctrineTransactionMiddleware}
+ */
+class DoctrineTransactionMiddleware extends \TMV\Laminas\Messenger\Bridge\Doctrine\Middleware\DoctrineTransactionMiddleware
 {
-    protected function handleForManager(
-        EntityManagerInterface $entityManager,
-        Envelope $envelope,
-        StackInterface $stack
-    ): Envelope {
-        $entityManager->getConnection()->beginTransaction();
+    public function __construct(ManagerRegistry $managerRegistry, ?string $entityManagerName = null)
+    {
+        parent::__construct($managerRegistry, $entityManagerName);
 
-        try {
-            $envelope = $stack->next()->handle($envelope, $stack);
-            $entityManager->flush();
-            $entityManager->getConnection()->commit();
-
-            return $envelope;
-        } catch (Throwable $exception) {
-            $entityManager->getConnection()->rollBack();
-
-            if ($exception instanceof HandlerFailedException) {
-                // Remove all HandledStamp from the envelope so the retry will execute all handlers again.
-                // When a handler fails, the queries of allegedly successful previous handlers just got rolled back.
-                throw new HandlerFailedException(
-                    $exception->getEnvelope()->withoutAll(HandledStamp::class),
-                    $exception->getNestedExceptions()
-                );
-            }
-
-            throw $exception;
-        }
+        trigger_error(sprintf(
+            'Class %s is deprecated, please use %s instead',
+            self::class,
+            \TMV\Laminas\Messenger\Bridge\Doctrine\Middleware\DoctrineTransactionMiddleware::class
+        ), E_USER_DEPRECATED);
     }
 }

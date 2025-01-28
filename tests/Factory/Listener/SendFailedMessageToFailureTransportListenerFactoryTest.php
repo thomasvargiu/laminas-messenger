@@ -35,6 +35,9 @@ class SendFailedMessageToFailureTransportListenerFactoryTest extends TestCase
         $container->get('failure-transport-name')
             ->shouldBeCalled()
             ->willReturn($sender->reveal());
+        $container->has('logger.service')
+            ->shouldBeCalled()
+            ->willReturn(true);
         $container->get('logger.service')
             ->shouldBeCalled()
             ->willReturn($logger->reveal());

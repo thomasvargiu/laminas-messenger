@@ -6,6 +6,7 @@ namespace TMV\Laminas\Messenger\Factory\Middleware;
 
 use Psr\Container\ContainerInterface;
 use Symfony\Component\Messenger\Middleware\AddBusNameStampMiddleware;
+use Symfony\Component\Messenger\Middleware\MiddlewareInterface;
 use TMV\Laminas\Messenger\Exception\InvalidArgumentException;
 
 use function array_key_exists;
@@ -28,12 +29,17 @@ final class AddBusNameStampMiddlewareFactory
         return new AddBusNameStampMiddleware($this->busName);
     }
 
+    public static function __set_state(array $data): self
+    {
+        return new self($data['busName'] ?? null);
+    }
+
     /**
      * @psalm-api
      *
      * @param array<int, mixed> $arguments
      */
-    public static function __callStatic(string $name, array $arguments): AddBusNameStampMiddleware
+    public static function __callStatic(string $name, array $arguments): MiddlewareInterface
     {
         if (! array_key_exists(0, $arguments) || ! $arguments[0] instanceof ContainerInterface) {
             throw new InvalidArgumentException(sprintf(
@@ -42,6 +48,6 @@ final class AddBusNameStampMiddlewareFactory
             ));
         }
 
-        return (new static($name))($arguments[0]);
+        return (new self($name))($arguments[0]);
     }
 }

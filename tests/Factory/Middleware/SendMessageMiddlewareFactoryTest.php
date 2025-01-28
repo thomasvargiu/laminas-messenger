@@ -40,6 +40,9 @@ class SendMessageMiddlewareFactoryTest extends TestCase
             ->shouldBeCalled()
             ->willReturn($eventDispatcher->reveal());
 
+        $container->has('messenger.logger')
+            ->shouldBeCalled()
+            ->willReturn(true);
         $container->get('messenger.logger')
             ->shouldBeCalled()
             ->willReturn($logger->reveal());

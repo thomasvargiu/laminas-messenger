@@ -31,6 +31,9 @@ class HandleMessageMiddlewareFactoryTest extends TestCase
 
         $logger = $this->prophesize(LoggerInterface::class);
 
+        $container->has('messenger.logger')
+            ->shouldBeCalled()
+            ->willReturn(true);
         $container->get('messenger.logger')
             ->shouldBeCalled()
             ->willReturn($logger->reveal());

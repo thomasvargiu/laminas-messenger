@@ -6,19 +6,16 @@ namespace TMV\Laminas\Messenger\Factory\Middleware;
 
 use Psr\Container\ContainerInterface;
 use Symfony\Component\Messenger\Middleware\HandleMessageMiddleware;
+use Symfony\Component\Messenger\Middleware\MiddlewareInterface;
 use TMV\Laminas\Messenger\Exception\InvalidArgumentException;
 use TMV\Laminas\Messenger\Factory\Handler\HandlersLocatorFactory;
 
 use function array_key_exists;
 use function sprintf;
 
-/**
- * @psalm-api
- */
 final class HandleMessageMiddlewareFactory
 {
-    /** @var string */
-    private $busName;
+    private string $busName;
 
     public function __construct(string $busName = 'messenger.bus.default')
     {
@@ -36,11 +33,16 @@ final class HandleMessageMiddlewareFactory
         $handlersLocator = (new HandlersLocatorFactory($this->busName))($container);
         $middleware = new HandleMessageMiddleware($handlersLocator, $allowNoHandlers);
 
-        if ($logger !== null) {
+        if ($logger && $container->has($logger)) {
             $middleware->setLogger($container->get($logger));
         }
 
         return $middleware;
+    }
+
+    public static function __set_state(array $data): self
+    {
+        return new self($data['busName'] ?? null);
     }
 
     /**
@@ -48,7 +50,7 @@ final class HandleMessageMiddlewareFactory
      *
      * @param array<int, mixed> $arguments
      */
-    public static function __callStatic(string $name, array $arguments): HandleMessageMiddleware
+    public static function __callStatic(string $name, array $arguments): MiddlewareInterface
     {
         if (! array_key_exists(0, $arguments) || ! $arguments[0] instanceof ContainerInterface) {
             throw new InvalidArgumentException(sprintf(
@@ -57,6 +59,6 @@ final class HandleMessageMiddlewareFactory
             ));
         }
 
-        return (new static($name))($arguments[0]);
+        return (new self($name))($arguments[0]);
     }
 }

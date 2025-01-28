@@ -24,6 +24,11 @@ class ConfigProvider
                 SFMessenger\Transport\TransportFactoryInterface::class => SFMessenger\Transport\TransportFactory::class,
             ],
             'factories' => [
+                Bridge\Doctrine\Middleware\DoctrineClearEntityManagerMiddleware::class => Bridge\Doctrine\Factory\Middleware\DoctrineClearEntityManagerMiddlewareFactory::class,
+                Bridge\Doctrine\Middleware\DoctrineCloseConnectionMiddleware::class => Bridge\Doctrine\Factory\Middleware\DoctrineCloseConnectionMiddlewareFactory::class,
+                Bridge\Doctrine\Middleware\DoctrineOpenTransactionLoggerMiddleware::class => Bridge\Doctrine\Factory\Middleware\DoctrineOpenTransactionLoggerMiddlewareFactory::class,
+                Bridge\Doctrine\Middleware\DoctrinePingConnectionMiddleware::class => Bridge\Doctrine\Factory\Middleware\DoctrinePingConnectionMiddlewareFactory::class,
+                Bridge\Doctrine\Middleware\DoctrineTransactionMiddleware::class => Bridge\Doctrine\Factory\Middleware\DoctrineTransactionMiddlewareFactory::class,
                 SFMessenger\Transport\InMemoryTransportFactory::class => InvokableFactory::class,
                 SFMessenger\Bridge\Amqp\Transport\AmqpTransportFactory::class => InvokableFactory::class,
                 SFMessenger\Bridge\Doctrine\Transport\DoctrineTransportFactory::class => Bridge\Doctrine\Factory\Transport\DoctrineTransportFactoryFactory::class,
